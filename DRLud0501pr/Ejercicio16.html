@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 16</title>
+</head>
+<body>
+    <h1>Desplázate para cambiar el color de fondo</h1>
+    <p style="margin-bottom: 1000px;">Haz scroll hacia abajo o hacia arriba para ver el cambio de color en el fondo.</p>
+    <script>
+        // Función para generar un color aleatorio en formato hexadecimal
+        function generarColorAleatorio() {
+            return `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0')}`;
+        }
+
+        // Evento que escucha el scroll de la ventana
+        window.addEventListener('scroll', () => {
+            document.body.style.backgroundColor = generarColorAleatorio();
+        });
+    </script>
+</body>
+</html>

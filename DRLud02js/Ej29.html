@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 29</title>
+</head>
+
+<body>
+    <script>
+        document.write("<h1>Suma de sueldos</h1>");
+        var suma = 0,contador = 0,cantSueldos = 0;
+        do {
+            var num = parseInt(prompt("Introduce un sueldo: "));
+            suma += num;
+            if (num > 1000){
+                cantSueldos++;
+            }
+            contador++;
+        } while (contador < 10);
+        document.write("La suma de todos los numeros da "+suma+"<br>");
+        document.write("Hay "+cantSueldos+" sueldos mayores de 1000€")
+    </script>
+</body>
+
+</html>

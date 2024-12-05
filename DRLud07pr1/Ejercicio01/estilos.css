@@ -1,0 +1,46 @@
+* {
+    margin: 0 auto;
+}
+
+table {
+    margin-top: 30px;
+    border-collapse: collapse;
+    border: 1px solid black;
+    text-align: center;
+    width: 80%;
+}
+
+body {
+    background-color: #E1F5FE;
+}
+
+header {
+    background: linear-gradient(135deg, #1E1E2F, #5B2C6F, #2E86C1);
+    height: 65px;
+}
+
+header button {
+    margin-top: 20px;
+    margin-right: 20px;
+    float: right;
+}
+
+th {
+    border-bottom: 1px solid blue;
+    background-color: blue;
+    color: white;
+}
+
+form {
+    /* Lo dejamos en oculto */
+    display: none;
+    border: 1px solid black;
+    width: 50%;
+    padding: 20px;
+    text-align: center;
+    color: #5B2C6F;
+}
+
+#nombre{
+    margin-top: 20px;
+}

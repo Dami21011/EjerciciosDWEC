@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #status {
+            margin-top: 20px;
+            font-weight: bold;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bienvenido a la Página Principal</h1>
+    <button id="accesoBtn">Acceso</button>
+    <p id="status"></p>
+
+    <script>
+        document.getElementById("accesoBtn").onclick = function() {
+            var popup = window.open("", "Login", "width=300,height=300");
+
+            if (!popup) {
+                alert("Por favor, permite las ventanas emergentes.");
+                return;
+            }
+
+            // Contenido de la ventana emergente
+            popup.document.write('<html lang="es"><head><meta charset="UTF-8"><title>Acceso</title>');
+            popup.document.write('<style>body { text-align: center; font-family: Arial, sans-serif; }</style></head><body>');
+            popup.document.write('<h2>Login</h2>');
+            popup.document.write('<label>Usuario:</label><input type="text" id="username"><br><br>');
+            popup.document.write('<label>Contraseña:</label><input type="password" id="password"><br><br>');
+            popup.document.write('<button id="loginBtn">Iniciar sesión</button>');
+            popup.document.write('<p id="error" style="color: red;"></p>');
+
+            // Script para manejar el inicio de sesión
+            popup.document.write('<script>');
+            popup.document.write('document.getElementById("loginBtn").onclick = function() {');
+            popup.document.write('var username = document.getElementById("username").value;');
+            popup.document.write('var password = document.getElementById("password").value;');
+            popup.document.write('if (username === "admin" && password === "1234") {');
+            popup.document.write('window.opener.document.getElementById("status").innerHTML = "Acceso Permitido";');
+            popup.document.write('window.close();');
+            popup.document.write('} else {');
+            popup.document.write('document.getElementById("error").innerHTML = "No se ha podido completar el Acceso";');
+            popup.document.write('}');
+            popup.document.write('};');
+            popup.document.write('<\/script>'); // Cerrar el script
+            popup.document.write('</body></html>'); // Cerrar el cuerpo del documento
+        };
+    </script>
+</body>
+</html>

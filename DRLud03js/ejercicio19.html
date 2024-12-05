@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 19</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        #resultado {
+            font-size: 2em;
+            color: #333;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div id="resultado"></div>
+        <button onclick="generarLetra()">Generar Letra</button>
+    </div>
+
+    <script>
+        function generarLetra() {
+            var letra = String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+            document.getElementById("resultado").innerText = letra;
+        }
+    </script>
+</body>
+</html>

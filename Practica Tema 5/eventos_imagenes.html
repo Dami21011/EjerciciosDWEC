@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imagenes</title>
+</head>
+<style>
+    img {
+        height: 100px;
+        width: 100px;
+    }
+</style>
+
+<body>
+    <img src="cr7.jpg" class="image">
+    <img src="messi.jpeg" class="image">
+    <img src="neymar.jpeg" class="image">
+    <script>
+        var imagenes = document.querySelectorAll('.image');
+
+        imagenes.forEach(image => {
+            image.addEventListener('mouseover', () => {
+                image.style.width = '200px';
+                image.style.height = '200px';
+                image.style.border = '3px solid red';
+            });
+
+            image.addEventListener('mouseout', () => {
+                image.style.width = '100px';
+                image.style.height = '100px';
+                image.style.border = 'none';
+            });
+        });
+    </script>
+</body>
+
+</html>

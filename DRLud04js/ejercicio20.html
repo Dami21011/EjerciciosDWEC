@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Arrays</title>
+</head>
+
+<body>
+    <h1>Países</h1>
+    <script>
+        // Crear el array
+        let paisesAmerica = ["Perú","Argentina","México","Venezuela"];
+        let paisesAsia =  ["Japón","India","China"];
+
+        // Juntamos los dos arrays en uno solo
+        let paises = paisesAmerica.concat(paisesAsia);
+
+        // Mostrar el listado unificado
+        document.write("<b><u>Los países de la lista son: </u></b><br>");
+        for (let i = 0; i < paises.length; i++) {
+            document.write(paises[i] + " <br>");
+        }
+    </script>
+</body>
+
+</html>

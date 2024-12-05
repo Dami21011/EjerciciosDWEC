@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+<body>
+    <script>
+        // Declarar variables de Hospital
+        let codHospital,nombreHospital,direccion,telefono,poblacion,codPostal;
+
+        //Declaracion del objeto Hospital
+        function Hospital(codHospital_in,nombreHospital_in,direccion_in,telefono_in,poblacion_in,codPostal_in){
+            this.codHospital = codHospital_in;
+            this.nombreHospital = nombreHospital_in;
+            this.direccion = direccion_in;
+            this.telefono = telefono_in;
+            this.poblacion = poblacion_in;
+            this.codPostal = codPostal_in;
+        }
+
+        //Declarar variables de Medico
+        let codMedico,nombre,apellidos,dni,dirMedico,telefMedico,poblacionMedico,codPostalMedico,fechaNacimiento,especialidad,sueldo,hospital;
+        
+        //Declaracion del objeto Medico
+        function Medico(codMedico_in,nombre_in,apellidos_in,dni_in,dirMedico_in,telefMedico_in,poblacionMedico_in,codPostalMedico_in,fechaNacimiento_in,especialidad_in,sueldo_in,hospital_in){
+            this.codMedico = codMedico_in;
+            this.nombre = nombre_in;
+            this.apellidos = apellidos_in;
+            this.dni = dni_in;
+            this.dirMedico = dirMedico_in;
+            this.telefMedico = telefMedico_in;
+            this.poblacionMedico = poblacionMedico_in;
+            this.codPostalMedico = codPostalMedico_in;
+            this.fechaNacimiento = fechaNacimiento_in;
+            this.especialidad = especialidad_in;
+            this.sueldo = sueldo_in;
+            this.hospital = hospital_in;
+        }
+
+        //Metodo para cambiar el sueldo
+        Medico.prototype.cambiaSueldo = function(sueldo_in){
+            this.sueldo = sueldo_in;
+        }
+
+        //Calcular la retención del medico pasandole el sueldo y el porcentaje
+        Medico.prototype.retencionMedico = function(sueldo_in,porcentaje_in){
+            return sueldo_in * (porcentaje_in/100);
+        }
+
+        //Metodo para mostrar los datos del medico y en el hospital que trabaja
+        Medico.prototype.mostrarMedico = function(){
+            document.write("Codigo Medico: "+this.codMedico+"<br>");
+            document.write("Nombre: "+this.nombre+"<br>");
+            document.write("Apellidos: "+this.apellidos+"<br>");
+            document.write("DNI: "+this.dni+"<br>");
+            document.write("Direccion: "+this.dirMedico+"<br>");
+            document.write("Telefono: "+this.telefMedico+"<br>");
+            document.write("Poblacion: "+this.poblacionMedico+"<br>");
+            document.write("Cod Postal: "+this.codPostalMedico+"<br>");
+            document.write("Fecha Nacimiento: "+this.fechaNacimiento+"<br>");
+            document.write("Especialidad: "+this.especialidad+"<br>");
+            document.write("Sueldo: "+this.sueldo+"<br>");
+            document.write("Hospital: "+this.hospital.nombreHospital+"<br>");
+        }
+
+        //Creamos una instancia de Hospital llamada HospitalRibera
+        let HospitalRibera = new Hospital(1234,"Hospital Ribera","Calle de la Ribera","657234555","Guadalajara","43021");
+
+        //Creamos dos instancias del objeto llamado Medico llamados medicoDigestivo y medicoTraumatologo que pertenecen al hospitalRibera
+        let medicoDigestivo = new Medico(12345,"Juan","Perez","26889321K","Calle de la Paz 21","643211345","Guadalajara","43020","21/04/1987","Gastroenterólogo",1950,HospitalRibera);
+        let medicoTraumatologo = new Medico(12346,"Pedro","García","24669320J","Calle Herrero de Sevilla 45","722345678","Guadalajara","43021","23/09/1976","Traumatología",2100,HospitalRibera);
+
+        //Cambiamos el sueldo de MedicoTraumatologo a 2300
+        medicoTraumatologo.cambiaSueldo(2300);
+
+        ////Creamos el metodo para mostrar los datos del hospital
+        Hospital.prototype.mostrarHospital = function(){
+            document.write("Codigo Hospital: "+this.codHospital+"<br>");
+            document.write("Nombre: "+this.nombreHospital+"<br>");
+            document.write("Direccion: "+this.direccion+"<br>");
+            document.write("Telefono: "+this.telefono+"<br>");
+            document.write("Poblacion: "+this.poblacion+"<br>");
+            document.write("Cod Postal: "+this.codPostal+"<br>");
+        }
+
+        //Mostramos los datos de Hospital RIbera
+        document.write("Datos del Hospital Ribera: <br>");
+        HospitalRibera.mostrarHospital();
+        document.write("-----------------------<br>");
+
+        //Calculamos la retencion de los dos medicos
+        medicoDigestivo.retencionMedico(medicoDigestivo.sueldo,20);
+        medicoTraumatologo.retencionMedico(medicoTraumatologo.sueldo,20);
+
+        //Mostramos los datos de Medico Digestivo y Medico Traumatologo
+        document.write("Datos del Medico Digestivo: <br>");
+        medicoDigestivo.mostrarMedico();
+        document.write("Retención: "+medicoDigestivo.retencionMedico(medicoDigestivo.sueldo,20)+"<br>");
+        document.write("Sueldo final: "+(medicoDigestivo.sueldo-medicoDigestivo.retencionMedico(medicoDigestivo.sueldo,20))+"<br>");
+
+        document.write("------------------------<br>");
+        
+        document.write("Datos del Medico Traumatologo: <br>");
+        medicoTraumatologo.mostrarMedico();
+        document.write("Retención: "+medicoTraumatologo.retencionMedico(medicoTraumatologo.sueldo,20)+"<br>");
+        document.write("Sueldo final: "+(medicoTraumatologo.sueldo-medicoTraumatologo.retencionMedico(medicoTraumatologo.sueldo,20))+"<br>");
+
+    </script>
+</body>
+</html>

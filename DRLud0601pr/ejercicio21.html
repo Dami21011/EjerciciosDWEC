@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 21</title>
+</head>
+<body>
+    <h1>Librería</h1>
+    <ul id="lista-libros">
+        <li>Harry Potter y la piedra filosofal</li>
+        <li>Harry Potter y la cámara secreta</li>
+        <li>Harry Potter y el prisionero de Azkaban</li>
+        <li>Harry Potter y el cáliz de fuego</li>
+    </ul>
+    <script>
+        // Seleccionamos la lista de libros
+        let libros = Array.from(document.querySelectorAll('li'));
+
+        // Creamos un nuevo elemento li para el libro adicional
+        let nuevoLibro = document.createElement('li');
+        nuevoLibro.textContent = 'Harry Potter y la orden del fénix';
+
+        // Añadimos el nuevo libro al principio de la lista
+        document.getElementById('lista-libros').append(nuevoLibro);
+
+        // Actualizamos la lista de libros
+        libros = Array.from(document.querySelectorAll('li'));
+
+        // Mostramos cuántos libros hay en la lista
+        document.write(`Hay ${libros.length} libros en la lista`);
+    </script>
+</body>
+</html>

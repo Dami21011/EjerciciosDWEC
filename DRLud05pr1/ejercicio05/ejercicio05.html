@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 5</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+    <form id="miFormulario">
+        <h2>Formulario de logueo personalizado</h2>
+        <label for="usu">Usuario
+            <input type="text" id="usu" name="usu">
+        </label>
+        <br>
+        <label for="pass">Password
+            <input type="password" id="pass" name="pass">
+        </label>
+        <br>
+        <label for="fondo">Color fondo
+            <input type="color" id="fondo" name="fondo">
+        </label>
+        <br>
+        <label for="rec">
+            <input type="checkbox" id="rec" name="recordar">Recordar
+        </label>
+        <input type="submit" id="envio" value="Entrar">
+    </form>
+
+    <script>
+
+        // Función para establecer cookies
+        function setCookie(nombre, valor, dias) {
+            var fecha = new Date();
+            fecha.setTime(fecha.getTime() + (dias * 24 * 60 * 60 * 1000));
+            var expira = "expires=" + fecha.toUTCString();
+            document.cookie = nombre + "=" + valor + ";" + expira + ";path=/";
+        }
+
+        // Función para obtener el valor de una cookie
+        function getCookie(nombre) {
+            var nombreEQ = nombre + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i].trim();
+                if (c.indexOf(nombreEQ) === 0) return c.substring(nombreEQ.length, c.length);
+            }
+            return "";
+        }
+
+        // Al cargar la página, se verifica si hay cookies guardadas
+        window.onload = function () {
+            if (getCookie("recordar") === "si") {
+                document.getElementById("usu").value = getCookie("usu");
+                document.getElementById("pass").value = getCookie("pass");
+                document.getElementById("fondo").value = getCookie("fondo");
+                document.body.style.backgroundColor = getCookie("fondo");
+                document.getElementById("rec").checked = true;
+            }
+        };
+
+        document.getElementById("miFormulario").addEventListener("submit", function (e) {
+            e.preventDefault();
+            // Obtener el valor del color de fondo ingresado
+            var color = document.getElementById("fondo").value;
+            // Cambiamos color
+            document.body.style.backgroundColor = color;
+
+            //Controlamos con el checkbox la información que se envía con cookies
+            if (document.getElementById("rec").checked) {
+                // Creamos una cookie con el nombre "recordar" y el valor "si"
+                document.cookie = "recordar=si";
+            } else {
+                // Creamos una cookie con el nombre "recordar" y el valor "no"
+                document.cookie = "recordar=no";
+            }
+
+            // Si la casilla "Recordar datos" está marcada, guardar las cookies
+            if (document.getElementById("rec").checked) {
+                setCookie("recordar", "si", 30);  // Recordar por 30 días
+                setCookie("usu", document.getElementById("usu").value, 30);
+                setCookie("pass", document.getElementById("pass").value, 30);
+                setCookie("fondo", document.getElementById("fondo").value, 30);
+            } else {
+                setCookie("recordar", "no", 0);  // No recordar
+                setCookie("usu", "", 0);
+                setCookie("pass", "", 0);
+                setCookie("fondo", "", 0);
+            }
+
+        });
+    </script>
+</body>
+
+</html>

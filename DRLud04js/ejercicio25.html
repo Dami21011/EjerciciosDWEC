@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objetos</title>
+</head>
+<body>
+    <script>
+        var cif, nombreEmpresa, descripcion, sector, direccion, telefono, poblacion, codPostal, correo;
+        
+        // Constructor para el objeto Proveedor
+        function Proveedor(cif_in, nombreEmpresa_in, descripcion_in, sector_in, direccion_in, telefono_in, poblacion_in, codPostal_in, correo_in) {
+            this.cif = cif_in;
+            this.nombreEmpresa = nombreEmpresa_in;
+            this.descripcion = descripcion_in;
+            this.sector = sector_in;
+            this.direccion = direccion_in;
+            this.telefono = telefono_in;
+            this.poblacion = poblacion_in;
+            this.codPostal = codPostal_in;
+            this.correo = correo_in;
+        }
+
+        let prov1 = new Proveedor(
+            "L23458902", 
+            "Junululu SL", 
+            "Empresa gamer", 
+            "Gaming", 
+            "C/ Francesc Baldomar 45", 
+            "658833448", 
+            "Valencia", 
+            "46011", 
+            "holajunululu@gmaul.com"
+        );
+
+        //Creamos proveedorInformatica
+        let proveedorInformatica = new Proveedor(
+            "J23116690", 
+            "AppleDamian SL", 
+            "Empresa de informatica", 
+            "Informatica", 
+            "C/ Francesc Baldomar 45", 
+            "658833448", 
+            "Valencia", 
+            "46011", 
+            "informaticaappledam@gmail.com"
+        );
+
+        var codproducto, nombreProd, desc, categoria, peso, precio, stock, proveedor;
+        
+        // Constructor para el objeto Producto
+        function Producto(codPro_in, nomPro_in, desc_in, categ_in, peso_in, precio_in, stock_in, proveedor_in) {
+            this.codproducto = codPro_in;
+            this.nombreProd = nomPro_in;
+            this.descripcion = desc_in;
+            this.categoria = categ_in;
+            this.peso = peso_in;
+            this.precio = precio_in;
+            this.stock = stock_in;
+            this.proveedor = proveedor_in;
+        }
+
+        // Métodos de la clase Producto
+        Producto.prototype.aumentaStock = function(aumento) {
+            this.stock += aumento;
+        };
+
+        Producto.prototype.disminuyeStock = function(desc) {
+            this.stock -= desc;
+        };
+
+        Producto.prototype.IVAProducto = function(porcentaje) {
+            this.precio = this.precio + (this.precio * porcentaje / 100);
+        };
+
+        //Creamos un producto para proveedorInformatica
+        let prod2 = new Producto(
+            "P12345679",
+            "MacBook",
+            "Portátil de 16 Gb",
+            "Apple",
+            "1.5 kg",
+            1200,
+            20,
+            proveedorInformatica
+        )
+        // Función para mostrar datos
+        function mostrarDatos(producto) {
+            // Muestra los datos del producto
+            document.write("Nombre del producto: " + producto.nombreProd);
+            document.write("<br>Descripción: " + producto.descripcion);
+            document.write("<br>Categoría: " + producto.categoria);
+            document.write("<br>Peso: " + producto.peso);
+            document.write("<br>Precio: " + producto.precio);
+            document.write("<br>Stock: " + producto.stock);
+            
+            // Muestra los datos del proveedor
+            document.write("<br><b><u>Su Proveedor</u></b>");
+            document.write("<br>CIF Proveedor: " + producto.proveedor.cif);
+            document.write("<br>Nombre Proveedor: " + producto.proveedor.nombreEmpresa);
+            document.write("<br>Descripción Proveedor: " + producto.proveedor.descripcion);
+            document.write("<br>Sector Proveedor: " + producto.proveedor.sector);
+            document.write("<br>Dirección Proveedor: " + producto.proveedor.direccion);
+            document.write("<br>Teléfono del proveedor: " + producto.proveedor.telefono);
+            document.write("<br>Población del proveedor: " + producto.proveedor.poblacion);
+            document.write("<br>Código Postal del proveedor: " + producto.proveedor.codPostal);
+            document.write("<br>Correo Proveedor: " + producto.proveedor.correo);
+        }
+
+        mostrarDatos(prod2);
+    </script>
+</body>
+</html>

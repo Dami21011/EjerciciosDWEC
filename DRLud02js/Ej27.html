@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 26</title>
+</head>
+
+<body>
+    <h1>Factorial de un número</h1>
+    <script>
+        function factorial(n) {
+            if (n < 0) {
+                return "No hay factorial para números negativos.";
+            } else if (n === 0 || n === 1) {
+                return 1;
+            } else {
+                return n * factorial(n - 1);
+            }
+        }
+
+        var number = parseInt(prompt("Introduce un número para calcular su factorial:"));
+        document.write("El factorial de " + number + " es " + factorial(number) + ".");
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+</head>
+
+<body>
+    <!-- Creamos un parrafo -->
+    <p id="parrafo">Este es un parrafo de texto</p>
+    <!-- Boton para poner el texto pequeño -->
+    <button onclick="cambiarTamanoPequeño()">Poner texto pequeño</button>
+    <button onclick="cambiarTamanoMediano()">Poner texto mediano</button>
+    <button onclick="cambiarTamanoGrande()">Poner texto grande</button>
+    <script>
+        // Obtenemos el elemento p
+        var parrafo = document.getElementById("parrafo");
+
+        // Funcion para poner el texto pequeño
+        function cambiarTamanoPequeño() {
+            // Cambiamos el tamaño del texto
+            parrafo.style.fontSize = "10px";
+        }
+
+        // Funcion para poner el texto mediano
+        function cambiarTamanoMediano() {
+            // Cambiamos el tamaño del texto
+            parrafo.style.fontSize = "13px";
+        }
+
+        // Funcion para poner el texto grande
+        function cambiarTamanoGrande() {
+            // Cambiamos el tamaño del texto
+            parrafo.style.fontSize = "20px";
+        }
+    </script>
+</body>
+
+</html>

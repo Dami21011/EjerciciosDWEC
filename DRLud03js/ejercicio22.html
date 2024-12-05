@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 22</title>
+</head>
+<body>
+    <h1>Máximo de los números</h1>
+
+    <script>
+        var max = null;
+        var NumeroValido = false;
+
+        for (var i = 0; i < 5; i++) {
+            var n = parseInt(prompt("Introduce un número: "));
+
+            if (isNaN(n)) {
+                alert("Introduce un valor válido.");
+                i--; // Repetir la iteración si no es un número válido
+            } else if (n < 0 || !(n % 2 == 0)) {
+                alert("Número negativo o impar no se tendrá en cuenta.");
+                i--; // Repetir la iteración si es un número negativo o impar
+            } else {
+                max = Math.max(max ?? n, n);
+                NumeroValido = true; // Al menos un número válido fue ingresado
+            }
+        }
+
+        if (NumeroValido) {
+            document.write("El número máximo es: " + max);
+        } else {
+            document.write("No se introdujo ningún número válido.");
+        }
+    </script>
+</body>
+</html>

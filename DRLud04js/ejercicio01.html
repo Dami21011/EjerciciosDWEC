@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sueldo Final</title>
+</head>
+<body>
+    <script>
+        let sueldo = 1750;
+        let comision = 5;
+        let retencion = 12;
+        //Ponemos el calculo y las variables que entran a la funcion
+        function sueldoFinal(sueldo,comision,retencion){
+            let sueldoFinal = sueldo + (sueldo * comision / 100) - (sueldo *  retencion / 100);
+            return "El sueldo final es de "+sueldoFinal+"€";
+        }
+        //Llamamos a la funcion pasandole los parametros
+        document.write(sueldoFinal(sueldo,comision,retencion));
+    </script>
+</body>
+</html>

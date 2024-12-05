@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 17</title>
+</head>
+
+<body>
+    <!-- Formulario para pedir datos -->
+    <form>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre"><br><br>
+
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" name="edad"><br><br>
+
+        <label for="apellidos">Apellidos:</label>
+        <input type="text" id="apellidos" name="apellidos"><br><br>
+    </form>
+
+    <script>
+        // Cambiar estilos al enfocar un input
+        function Pintar(event) {
+            event.target.style.background = "white";
+            event.target.style.color = "blue";
+        }
+
+        // Seleccionar todos los inputs y agregarles el evento focus
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', Pintar);
+        });
+    </script>
+</body>
+
+</html>

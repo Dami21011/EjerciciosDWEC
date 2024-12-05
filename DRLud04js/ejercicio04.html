@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carnet de conducir</title>
+</head>
+
+<body>
+    <script>
+        let letra = "D1";
+        function letraCarnet(letra) {
+            switch (letra) {
+                case "AM":
+                    return "Licencia de ciclomotor";
+                case "A1":
+                    return "Motos sin sidecar con una cilindrada máxima de 125cc";
+                case "A2":
+                    return "Motocicletas, con o sin sidecar";
+                case "A":
+                    return "Motocicletas de cualquier cilindrada";
+                case "B":
+                    return "Turismos, furgonetas que no superen los 3.500 kg";
+                case "C1":
+                    return "Automóviles entre 3.500kg y 7.500kg";
+                case "C":
+                    return "Superior a los 3.500kg, y con menos de 9 asientos";
+                case "D1":
+                    return "Vehículos de más de 9 plazas y menos de 17 plazas";
+                case "D":
+                    return "Vehículos con más de 9 plazas sin límite de plazas";
+                case "BTP":
+                    return "Vehículos especiales, taxis, prioritarios y transporte escolar";
+                default:
+                    return "No existe";
+            }
+        }
+
+        document.write("<b><u>Tu permiso de conducir es: " + letra + "</u></b>");
+        document.write("<br>");
+        document.write("Te permite: " + letraCarnet(letra));
+    </script>
+</body>
+
+</html>

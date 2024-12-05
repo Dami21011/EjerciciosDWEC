@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 14</title>
+</head>
+<body>
+    <h1>Añadir Nodos de Texto</h1>
+    <button onclick="añadirTexto()">Añadir Nodo de Texto</button>
+    <div id="contenedor">
+        <p id="parrafo">Nodos añadidos: </p>
+    </div>
+
+    <script>
+        let contador = 0;
+
+        function añadirTexto() {
+            // Incrementar el contador
+            contador++;
+
+            // Crear un nodo de texto con el contador
+            const nodoTexto = document.createTextNode(` ${contador}`);
+
+            // Seleccionar el párrafo y añadir el nodo de texto
+            const parrafo = document.getElementById('parrafo');
+            parrafo.appendChild(nodoTexto);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 35</title>
+</head>
+
+<body>
+    <h1>Sueldo Máximo</h1>
+    <script>
+        var n = parseInt(prompt("Cantidad de sueldos que vas a introducir:"));
+        var sueldoMax = 0;
+        for (var i = 1;i <= n;i++){
+            var sueldo = parseFloat(prompt("INtroduce el sueldo "+i+": "));
+            if (sueldo > sueldoMax){
+                sueldoMax = sueldo;
+            }
+        }
+        document.write("El sueldo maximo: "+sueldoMax);
+    </script>
+</body>
+
+</html>

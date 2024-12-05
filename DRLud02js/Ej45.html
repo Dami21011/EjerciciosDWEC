@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 45</title>
+</head>
+
+<body>
+    <h1>Cuestionario</h1>
+    <script>
+        var puntos = 0;
+        
+        alert("Bienvenidos al Cuestionario");
+
+        var pr1 = prompt("1. ¿Quien imparte la asignatura de DWEC? a) Paula b) Jordi c) Javi");
+        var pr2 = prompt("2. ¿Quien imparte la asignatura de DWES? a) Javi b) Paula c) Jesus");
+        var pr3 = prompt("3. ¿Quien imparte la asignatura de ENGLISH? a) Jordi b) Carlos c) Paula");
+        var pr4 = prompt("3. ¿Quien imparte la asignatura de EIE? a) Carlos b) Ana c) Javi")
+
+        if(pr1 == "c"){
+            puntos++;
+        }
+
+        if(pr2 == "b"){
+            puntos++;
+        }
+
+        if(pr3 == "a"){
+            puntos++;
+        }
+
+        if(pr4 == "b"){
+            puntos++;
+        }
+
+        document.write("Has sacado "+puntos+"/4 puntos posibles");
+
+    </script>
+</body>
+
+</html>

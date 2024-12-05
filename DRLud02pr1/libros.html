@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Librería</title>
+</head>
+
+<body>
+    <h1>Bienvenido a la librería</h1>
+    
+    <script>
+        var Libros = [
+            [1, "Access para Windows", "Charles Siegel", "Anaya", "Informática", "84-7614-759-7", 450, 45.67],
+            [2, "Salud", "Eduardo Almansa", "Deusto", "Medicina", "24-3547-590-1", 153, 23.18],
+            [3, "Redes de Computadores", "Luis Cárcel", "Paraninfo", "Informática", "47-8829-435-7", 215, 32.86]
+        ];
+
+        var codConsulta = parseInt(prompt("Introduce el código a buscar: "));
+        var libroEncontrado = false;
+
+        for (var i = 0; i < Libros.length; i++) {
+            if (codConsulta == Libros[i][0]) {
+                libroEncontrado = true;
+                document.write("<table border='2'>");
+                document.write("<tr><td><b>Código</b></td><td>" + Libros[i][0] + "</td></tr>");
+                document.write("<tr><td><b>Título</b></td><td>" + Libros[i][1] + "</td></tr>");
+                document.write("<tr><td><b>Autor</b></td><td>" + Libros[i][2] + "</td></tr>");
+                document.write("<tr><td><b>Editorial</b></td><td>" + Libros[i][3] + "</td></tr>");
+                document.write("<tr><td><b>Tema</b></td><td>" + Libros[i][4] + "</td></tr>");
+                document.write("<tr><td><b>ISBN</b></td><td>" + Libros[i][5] + "</td></tr>");
+                document.write("<tr><td><b>Páginas</b></td><td>" + Libros[i][6] + "</td></tr>");
+                document.write("<tr><td><b>Precio</b></td><td>" + Libros[i][7] + "</td></tr>");
+                document.write("</table>");
+                break;
+            }
+        }
+
+        if (!libroEncontrado) {
+            document.write("¡El libro solicitado no existe!");
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+table, td{
+    border: 1px solid black;
+    text-align: center;
+}
+
+#paleta {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.color {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+#color1 {
+    background-color: yellow;
+}
+
+#color2 {
+    background-color: green;
+}
+
+#color3 {
+    background-color: black;
+}
+
+#color4 {
+    background-color: red;
+}
+
+#color5 {
+    background-color: blue;
+}
+
+#color6 {
+    background-color: white;
+}
+
+#zonadibujo {
+    display: grid;
+    width: 300px;
+    border: 2px solid red;
+    grid-template-columns: repeat(30, 10px);
+    grid-template-rows: repeat(30, 10px);
+}
+
+.celda {
+    width: 10px;
+    height: 10px;
+    border: 1px solid #ddd;
+}
+
+.celda.seleccionada {
+    background-color: white;
+}
+
+.seleccionado {
+    border: 2px solid black;
+}
+
+#mensaje {
+    margin-top: 10px;
+    font-weight: bold;
+}

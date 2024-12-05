@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 36</title>
+</head>
+
+<body>
+    
+    <button id="boton">Ver página</button>
+
+    <script>
+        // Variable global para contar las visitas
+        var visitas = 0;
+
+        // Incrementar el contador de visitas en cada carga de página
+        visitas += 1;
+
+        // Detectar el clic en el botón
+        document.getElementById('boton').onclick = function () {
+            // Si el número de visitas es mayor a 5, redireccionar a El Corte Inglés
+            if (visitas > 5) {
+                window.location.href = 'http://www.elcorteingles.es';
+            }
+            // Si el número de visitas es menor o igual a 5, redireccionar a Yahoo
+            else {
+                window.location.href = 'http://www.yahoo.es';
+            }
+        };
+    </script>
+</body>
+
+</html>

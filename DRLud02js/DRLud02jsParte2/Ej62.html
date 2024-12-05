@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 62</title>
+</head>
+
+<body>
+    <h1>Multiplos de 3</h1>
+    <script>
+        var cont = 0, suma = 0;
+
+        var n1 = parseInt(prompt("Introduce un numero: "));
+
+        for(i = 1; i <= n1;i++){
+            if(i % 3 == 0){
+                cont++;
+                suma += i;
+                document.write(i+"<br>");
+            }
+        }
+
+        document.write("Total de numeros multiplos de 3: "+cont+"<br>");
+        document.write("Suma de numeros multiplos de 3: "+suma);
+
+    </script>
+</body>
+
+</html>

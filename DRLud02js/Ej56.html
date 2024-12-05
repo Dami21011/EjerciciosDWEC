@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 56</title>
+</head>
+
+<body>
+    <h1>Potencia de una base y un exponente introducidos</h1>
+    <script>
+        var base = parseInt(prompt("Introduce la base: "));
+
+        do {
+            var exp = parseInt(prompt("INtroduce el exponente: "));
+            if (exp < 0) {
+                alert("El exponente tiene que ser entero y positivo");
+            }
+        } while (exp < 0);
+
+        document.write(base+" elevado a "+exp+" es "+Math.pow(base,exp));
+    </script>
+</body>
+
+</html>

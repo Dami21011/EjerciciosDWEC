@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Asociativo</title>
+</head>
+
+<body>
+    <h1>Marcas de móviles ordenadas</h1>
+    <script>
+        // Crear el array asociativo como un objeto
+        let moviles = {
+            "Apple": "iPhone 8",
+            "Samsung": "Galaxy S8",
+            "Nokia": "Lumia 230",
+            "Huawei": "Mate 9",
+            "Sony": "Xperia XZ"
+        };
+
+        // Convertir el objeto a un array de pares clave-valor
+        const movilesArray = Object.entries(moviles);
+
+        // Ordenar el array de pares por los modelos de la Z a la A
+        movilesArray.sort((a, b) => b[1].localeCompare(a[1]));
+        
+        // Mostrar el listado ordenado
+        document.write("<b><u>ARRAY ORDENADO: </u></b><br>");
+        for (let [marca, modelo] of movilesArray) {  // Usar el array ordenado
+            document.write(`<b>Marca:</b> ${marca}, <b>Modelo:</b> ${modelo} <br>`);
+        }
+
+    </script>
+</body>
+
+</html>

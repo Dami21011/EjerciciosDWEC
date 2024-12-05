@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 5</title>
+</head>
+
+<body>
+    <div>
+        <img src="imgs/sol.jpeg" id="sol">
+        <img src="imgs/mercurio.jpeg" id="mercurio">
+        <img src="imgs/venus.jpeg" id="venus">
+        <img src="imgs/tierra.jpeg" id="tierra">
+        <img src="imgs/marte.jpeg" id="marte">
+        <img src="imgs/jupiter.jpeg" id="jupiter">
+        <img src="imgs/saturno.jpeg" id="saturno">
+        <img src="imgs/urano.jpeg" id="urano">
+        <img src="imgs/neptuno.jpeg" id="neptuno">
+        <p id="info"></p>
+    </div>
+    <script>
+        // Obtener los elementos img
+        const sol = document.getElementById('sol');
+        const mercurio = document.getElementById('mercurio');
+        const venus = document.getElementById('venus');
+        const tierra = document.getElementById('tierra');
+        const marte = document.getElementById('marte');
+        const jupiter = document.getElementById('jupiter');
+        const saturno = document.getElementById('saturno');
+        const urano = document.getElementById('urano');
+        const neptuno = document.getElementById('neptuno');
+
+        /*SI pasamos por encima mostramos info de cada planeta en un parrafo*/
+        sol.addEventListener('mouseover', () => {
+            document.getElementById('info').innerHTML = ` El sol es el planeta más grande del sistema solar, tiene un diámetro de 1.392.684 km y una masa de 1.989 x 10^30 kg.`;
+        });
+        sol.addEventListener('mouseout', () => {
+            document.getElementById('info').innerHTML = '';
+        });
+        mercurio.addEventListener('mouseover', () => {
+            document.getElementById('info').innerHTML = `Mercurio es el planeta más pequeño del sistema solar, tiene un diámetro de 4.879 km y una masa de 3.3022 x 10^23 kg.`;
+        });
+        mercurio.addEventListener('mouseout', () => {
+            document.getElementById('info').innerHTML = '';
+        });
+        venus.addEventListener('mouseover', () => {
+            document.getElementById('info').innerHTML = `Venus es el planeta más caliente del sistema solar, tiene un diámetro de 12.104 km y una masa de 4.8695 x 10^24 kg.`;
+        });
+        venus.addEventListener('mouseout', () => {
+            document.getElementById('info').innerHTML = '';
+        });
+        tierra.addEventListener('mouseover', () => {
+            document.getElementById('info').innerHTML = `La tierra es el planeta más habitable del sistema solar, tiene un diámetro de 12.742 km y una masa de 5.972 x 10^24 kg.`;
+        });
+        tierra.addEventListener('mouseout', () => {
+            document.getElementById('info').innerHTML = '';
+        });
+        marte.addEventListener('mouseover', () => {
+            document.getElementById('info').innerHTML = `Marte es el planeta más rocoso del sistema solar, tiene un diámetro de 6.794 km y una masa de 6.4171 x 10^23 kg.`;
+        });
+        marte.addEventListener('mouseout', () => {
+            document.getElementById('info').innerHTML = '';
+        });
+        jupiter.addEventListener('mouseover', () => {
+            document.getElementById('info').innerHTML = `Jupiter es el planeta más grande del sistema solar, tiene un diámetro de 142.984 km y una masa de 1.898 x 10^27 kg.`
+        });
+        jupiter.addEventListener('mouseout', () => {
+            document.getElementById('info').innerHTML = '';
+        });
+        saturno.addEventListener('mouseover', () => {
+            document.getElementById('info').innerHTML = `Saturno es el planeta más gaseoso del sistema solar, tiene un diámetro de 116.460 km y una masa de 5.684 x 10^26 kg.`;
+        });
+        saturno.addEventListener('mouseout', () => {
+            document.getElementById('info').innerHTML = '';
+        });
+        urano.addEventListener('mouseover', () => {
+            document.getElementById('info').innerHTML = `Urano es el planeta más inclinado del sistema solar, tiene un diámetro de 51.118 km y una masa de 8.681 x 10^25 kg.`;
+        });
+        urano.addEventListener('mouseout', () => {
+            document.getElementById('info').innerHTML = '';
+        });
+        neptuno.addEventListener('mouseover', () => {
+            document.getElementById('info').innerHTML = `Neptuno es el planeta más frío del sistema solar, tiene un diámetro de 49.528 km y una masa de 1.024 x 10^26 kg.`;
+        });
+        neptuno.addEventListener('mouseout', () => {
+            document.getElementById('info').innerHTML = '';
+        });
+    </script>
+</body>
+
+</html>

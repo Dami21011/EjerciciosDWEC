@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 13</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <form id="formularioDinamico">
+        <!-- Campo Nombre -->
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre">
+        <br><br>
+
+        <!-- Campo Apellidos (Oculto inicialmente) -->
+        <div id="contenedorApellidos" class="hidden">
+            <label for="apellidos">Apellidos:</label>
+            <input type="text" id="apellidos" name="apellidos">
+        </div>
+        <br>
+
+        <!-- Campo Edad (Oculto inicialmente) -->
+        <div id="contenedorEdad" class="hidden">
+            <label for="edad">Edad:</label>
+            <input type="number" id="edad" name="edad">
+        </div>
+        <br>
+
+        <!-- Botón Reset -->
+        <button type="reset">Reiniciar</button>
+    </form>
+
+    <script>
+        const campoNombre = document.getElementById('nombre');
+        const contenedorApellidos = document.getElementById('contenedorApellidos');
+        const campoApellidos = document.getElementById('apellidos');
+        const contenedorEdad = document.getElementById('contenedorEdad');
+
+        // Mostrar el campo Apellidos cuando se escribe en Nombre
+        campoNombre.addEventListener('input', () => {
+            if (campoNombre.value.trim() !== '') {
+                contenedorApellidos.classList.remove('hidden');
+            } else {
+                contenedorApellidos.classList.add('hidden');
+                contenedorEdad.classList.add('hidden');
+            }
+        });
+
+        // Mostrar el campo Edad cuando se escribe en Apellidos
+        campoApellidos.addEventListener('input', () => {
+            if (campoApellidos.value.trim() !== '') {
+                contenedorEdad.classList.remove('hidden');
+            } else {
+                contenedorEdad.classList.add('hidden');
+            }
+        });
+
+        // Ocultar todos los campos excepto Nombre al resetear
+        document.getElementById('formularioDinamico').addEventListener('reset', () => {
+            contenedorApellidos.classList.add('hidden');
+            contenedorEdad.classList.add('hidden');
+        });
+    </script>
+</body>
+</html>

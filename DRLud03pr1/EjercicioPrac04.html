@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4</title>
+</head>
+<style>
+    body {
+        margin: 0;
+        /* Resetea el margen */
+    }
+
+    iframe {
+        display: block;
+        /* iframes estan inline por defecto*/
+        background: #000;
+        border: none;
+        /* Quitamos el borde */
+        height: 100vh;
+        /* Viewport-relative unidades para que ocupe todo */
+        width: 100vw;
+    }
+</style>
+
+<body>
+    <iframe id="marco" allow="autoplay"></iframe> <!-- El iframe se puede reproducir auto -->
+
+    <script>
+        var urls = [
+            'https://www.youtube.com/embed/aqz-KE-bpKQ?autoplay=1', // Big Buck Bunny (demo video)
+            'https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1', // YouTube API demo
+            'https://www.youtube.com/embed/ysz5S6PUM-U?autoplay=1', // Sample video
+            'https://www.youtube.com/embed/T5VtfD0I0no?autoplay=1', // Educational video
+            'https://www.youtube.com/embed/ktvTqknDobU?autoplay=1', // Imagine Dragons - Believer
+            'https://www.youtube.com/embed/hTWKbfoikeg?autoplay=1', // Nirvana - Smells Like Teen Spirit
+            'https://www.youtube.com/embed/3JZ_D3ELwOQ?autoplay=1', // Charlie Puth - Attention
+            'https://www.youtube.com/embed/60ItHLz5WEA?autoplay=1', // Alan Walker - Faded
+            'https://www.youtube.com/embed/kXYiU_JCYtU?autoplay=1', // Linkin Park - Numb
+            'https://www.youtube.com/embed/FTQbiNvZqaY?autoplay=1'  // Europe - The Final Countdown
+        ];
+        document.getElementById('marco').src = urls[Math.floor(Math.random() * urls.length)] + '&mute=1';
+    </script>
+</body>
+
+</html>

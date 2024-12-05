@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 34</title>
+</head>
+
+<body>
+    <h1>Notas</h1>
+    <script>
+        var contador = 0,cantApr = 0,cantSus = 0;
+        do {
+            var notas = parseFloat(prompt("Introduce una nota: "));
+            if (notas >= 5){
+                cantApr++;
+            } else {
+                cantSus++;
+            }
+            contador++;
+        } while (contador < 6);
+        document.write("Alumnos aprobados: " + cantApr + "<br>");
+        document.write("Alumnos suspemdidos: "+cantSus);
+    </script>
+</body>
+
+</html>

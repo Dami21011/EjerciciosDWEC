@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 32</title>
+</head>
+
+<body>
+    <h1>Cadenas</h1>
+
+    <script>
+        var cadena = "Centro de Estudios IES el Grao";
+
+        document.write("Cadena original: " + cadena + "<br>");
+        var cadenarevertida = "";
+
+        //Itero la cadena de manera inversa
+        for (var i = cadena.length - 1; i >= 0; i--) {
+            //Voy concatenando el valor a la cadena resultado
+            cadenarevertida += cadena[i];
+        }
+        document.write("Cadena dada la vuelta: " + cadenarevertida);
+
+    </script>
+</body>
+
+</html>

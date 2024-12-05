@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Ejercicio 10 </title>
+</head>
+<body>
+    <h1>Lista de Trabajadores y Retenciones</h1>
+
+    <script>
+        var trabajadores = [
+          { nombre: "Juan", apellidos: "Pérez", sueldo: 2500, fechaAlta: new Date('1975-03-15') },
+          { nombre: "Ana", apellidos: "García", sueldo: 1800, fechaAlta: new Date('1985-06-01') },
+          { nombre: "Luis", apellidos: "Rodríguez", sueldo: 2200, fechaAlta: new Date('1995-10-22') },
+          { nombre: "Marta", apellidos: "Sánchez", sueldo: 3000, fechaAlta: new Date('2005-01-05') }
+        ];
+
+        for (var i = 0; i < trabajadores.length; i++) {
+          var trabajador = trabajadores[i];
+          var fechaAlta = trabajador.fechaAlta.getFullYear();
+          var retencion = 0;
+
+          if (fechaAlta < 1980) {
+            retencion = trabajador.sueldo * 0.20;
+          } else if (fechaAlta >= 1980 && fechaAlta <= 2000) {
+            retencion = trabajador.sueldo * 0.15;
+          } else if (fechaAlta > 2000) {
+            retencion = trabajador.sueldo * 0.05;
+          }
+
+          document.write("<h2>Trabajador: " + trabajador.nombre + " " + trabajador.apellidos + "</h2>");
+          document.write("<p>Sueldo: " + trabajador.sueldo + "€</p>");
+          document.write("<p>Fecha de Alta: " + trabajador.fechaAlta.toDateString() + "</p>");
+          document.write("<p>Retención: " + retencion.toFixed(2) + "€</p><hr>");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+<body>
+    <!-- Creamos el div con los tres parrafos -->
+    <div id="padre">
+        <p id="hijo1">Este es el primer parrafo</p>
+        <p id="hijo2">Este es el segundo parrafo</p>
+        <p id="hijo3">Este es el tercer parrafo</p>
+    </div>
+    <script>
+        //Verificamos cuantos hijos tiene el div con childNodes       
+        let padre = document.getElementById("padre");
+        //Lo mostramos en la pantalla
+        document.write(padre.childNodes.length);
+        //BUscamos que tipos de nodos son los hijos
+        for (let i = 0; i < padre.childNodes.length; i++) {
+            if(padre.childNodes[i].nodeType != Node.TEXT_NODE){
+            document.write("<br>");
+            document.write("El hijo " + (i + 1) + " es un " + padre.childNodes[i].nodeType);
+            }
+        }
+
+    </script>
+</body>
+</html>

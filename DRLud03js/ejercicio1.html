@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fecha</title>
+</head>
+<body>
+    <h1> Ejercicio 1 </h1>
+    <script>
+        // Crear una nueva fecha
+        var fecha = new Date();
+
+        // Obtener día, mes y año
+        var dia = fecha.getDate();
+        var mes = fecha.getMonth() + 1; // Los meses empiezan desde 0
+        var anio = fecha.getFullYear();
+
+        // Añadir un '0' si el día o mes es menor que 10
+        if (dia < 10) {
+            dia = '0' + dia;
+        }
+
+        if (mes < 10) {
+            mes = '0' + mes;
+        }
+
+        // Formatear la fecha como dd/mm/aaaa
+        var fechaFormateada = dia + '/' + mes + '/' + anio;
+
+        // Mostrar la fecha directamente en la página
+        document.write(fechaFormateada);
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 33</title>
+</head>
+
+<body>
+    <script>
+        var contador = 0, factura = 0, factTotal = 0, factmas600 = 0;
+        do {
+            var codArt = parseInt(prompt("Introduce el codigo del articulo: "));
+            var cantLitros = parseFloat(prompt("Introduce la cantidad de litros vendida: "));
+            do {
+                var precioLitro = parseFloat(prompt("Introduce el precio del litro(1- 0,6 €/litro, 2- 3 €/litro y 3- 1,25 €/litro): "));
+                if (precioLitro < 1 || precioLitro > 3) {
+                    alert("Solo puedes elegir entre el 1 y el 3")
+                }
+            } while (precioLitro < 1 || precioLitro > 3);
+            if (precioLitro == 1) {
+                precioLitro = 0.6;
+            } else if (precioLitro == 2) {
+                precioLitro = 3;
+            } else if (precioLitro == 3) {
+                precioLitro = 1.25;
+            }
+            contador++;
+            factura = precioLitro * cantLitros;
+            factTotal += factura;
+            if (factura > 600) {
+                factmas600++;
+            }
+            if (codArt == 1) {
+                document.write("La cantidad de litros vendida del articulo 1 fue: " + cantLitros + "<br>");
+            }
+        } while (contador < 5);
+        document.write("La facturacion total: " + factTotal + "<br>");
+        document.write("Hay " + factmas600 + " facturas de mas de 600€");
+    </script>
+</body>
+
+</html>

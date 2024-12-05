@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 8</title>
+</head>
+<body>
+
+    <table border="1">
+        <tr>
+            <td id="celda1">Celda 1</td>
+            <td>Celda 2</td>
+            <td>Celda 3</td>
+        </tr>
+        <tr>
+            <td>Celda 4</td>
+            <td>Celda 5</td>
+            <td>Celda 6</td>
+        </tr>
+    </table>
+
+    <script>
+        // Accedemos a la primera fila de la tabla
+        let fila = document.querySelectorAll("table tr")[0];
+
+        // Recorremos todas las celdas de la primera fila
+        for (let i = 0; i < fila.cells.length; i++) {
+            alert(fila.cells[i].textContent);  // Mostramos el texto de cada celda
+        }
+    </script>
+
+</body>
+</html>

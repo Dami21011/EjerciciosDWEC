@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 34</title>
+</head>
+
+<body>
+    <h1>Navegadores</h1>
+
+    <script>
+
+        switch (navigator.appCodeName) {
+            case "Mozilla":
+                // Es probable que Firefox y otros navegadores también usen "Mozilla" como appCodeName
+                if (navigator.userAgent.includes("Firefox")) {
+                    document.write("<b><u>Mozilla Firefox</u></b><br>");
+                    document.write("Mozilla Firefox, o simplemente Firefox, es un navegador web libre y de código abierto desarrollado por Mozilla, una comunidad global que trabaja junta para mantener una Web Abierta, pública y accesible.");
+                } else if (navigator.userAgent.includes("Chrome")) {
+                    document.write("<b><u>Google Chrome</u></b><br>");
+                    document.write("Logotipo del navegador Google Chrome. Google Chrome es de los principales navegadores, el más joven y el más popular actualmente.");
+                } else if (navigator.userAgent.includes("Safari")) {
+                    document.write("<b><u>Safari</u></b><br>");
+                    document.write("Safari es el complemento indispensable para los usuarios de Mac OS X. Inicialmente diseñado para ejecutarse en este sistema, es utilizado por alrededor del 4% de los usuarios en el mundo.");
+                } else if (navigator.userAgent.includes("Opera") || navigator.userAgent.includes("OPR")) {
+                    document.write("<b><u>Opera</u></b><br>");
+                    document.write("Opera es reconocido por su velocidad, seguridad, soporte de estándares (especialmente CSS), tamaño reducido y constante innovación.");
+                } else if (navigator.userAgent.includes("Edge")) {
+                    document.write("<b><u>Microsoft Edge</u></b><br>");
+                    document.write("Microsoft Edge es un navegador web desarrollado por Microsoft. Reemplazó a Internet Explorer y viene incluido en Windows 11, con soporte para los estándares web más actuales.");
+                } else {
+                    document.write("Navegador no reconocido.");
+                }
+                break;
+            default:
+                document.write("Navegador no reconocido.");
+                break;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 9</title>
+</head>
+<body>
+
+    <div id="contenedor">
+        <p>Párrafo 1</p>
+        <p>Párrafo 2</p>
+        <p>Párrafo 3</p>
+    </div>
+
+    <script>
+        // Accedemos al primer hijo del div
+        let div = document.getElementById("contenedor");
+        let primerHijo = div.firstElementChild;
+
+        // Usamos nextSibling para recorrer los nodos hermanos
+        let nodoActual = primerHijo;
+
+        while (nodoActual) {
+            if (nodoActual.nodeType === 1) { // Comprobamos si es un elemento (párrafo)
+                alert(nodoActual.textContent); // Mostramos el texto del párrafo
+            }
+            nodoActual = nodoActual.nextSibling; // Avanzamos al siguiente hermano
+        }
+    </script>
+
+</body>
+</html>

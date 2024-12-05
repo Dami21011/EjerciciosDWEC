@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Asociativo</title>
+</head>
+
+<body>
+    <h1>Marcas de móviles comprobando marcas</h1>
+    <script>
+        // Crear el array asociativo como un objeto
+        let moviles = {
+            "Apple": "iPhone 8",
+            "Samsung": "Galaxy S8",
+            "Nokia": "Lumia 230",
+            "Huawei": "Mate 9",
+            "Sony": "Xperia XZ"
+        };
+
+        // Mostrar el listado
+        for (let marca in moviles) {
+            document.write(`<b>Marca:</b> ${marca}, <b>Modelo:</b> ${moviles[marca]} <br>`);
+        }
+
+        document.write("<br>");
+        // Verificar marcas específicas
+        let marcasVerificar = ["Sony", "Motorola"];
+        for (let marca of marcasVerificar) {
+            document.write(`${marca} ${moviles.hasOwnProperty(marca) ? "existe" : "no existe"}!<br>`);
+        }
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 15</title>
+    <style>
+        #mensaje {
+            display: none;
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background-color: #ffcccb;
+            color: #333;
+            border: 1px solid #f5c6cb;
+            border-radius: 5px;
+            padding: 10px;
+            z-index: 1000;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ejercicio Scroll</h1>
+    <!-- Añadimos contenido para generar el scroll -->
+    <p>Este es un párrafo de texto.</p>
+    <p>Este es otro párrafo de texto.</p>
+    <!-- Más contenido -->
+    <p style="margin-bottom: 2000px;">Continúa desplazándote...</p>
+    
+    <!-- Contenedor del mensaje -->
+    <div id="mensaje">¡Te estás moviendo demasiado!</div>
+
+    <script>
+        let scrollUmbral = 15 * window.innerHeight; // Altura para considerar un umbral
+        let contadorScrolls = 0; // Contador de umbrales superados
+
+        window.addEventListener('scroll', function() {
+            // Comprobar si el scroll supera el umbral
+            if (window.scrollY >= scrollUmbral) {
+                contadorScrolls++; // Incrementar el contador
+                console.log(`Scroll umbral cruzado ${contadorScrolls} veces`);
+
+                // Mostrar el mensaje cada vez que se cruza el umbral
+                const mensaje = document.getElementById('mensaje');
+                mensaje.style.display = 'block'; // Mostrar el mensaje
+                mensaje.textContent = `¡Te estás moviendo demasiado!`;
+                
+                // Aumentar el umbral para el siguiente evento
+                scrollUmbral += 15 * window.innerHeight;
+
+                // Ocultar el mensaje después de un tiempo
+                setTimeout(() => {
+                    mensaje.style.display = 'none';
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>

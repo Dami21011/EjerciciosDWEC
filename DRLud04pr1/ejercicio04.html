@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facturas</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="factura"></div>
+
+    <script>
+        // Definición del objeto de factura
+        const factura = {
+            empresa: {
+                nombre: "Damian S.A.",
+                direccion: "Calle Falsa 123, Ciudad, País",
+                telefono: "123-456-789",
+                NIF: "A12345678"
+            },
+            cliente: {
+                nombre: "Javier Tarrega",
+                direccion: "Calle Real 456, Ciudad, País",
+                telefono: "987-654-321",
+                NIF: "B98765432"
+            },
+            detalle: [
+                {
+                    descripcion: "Producto 1",
+                    precio: 100.00,
+                    cantidad: 2
+                },
+                {
+                    descripcion: "Servicio 1",
+                    precio: 50.00,
+                    cantidad: 1
+                }
+            ],
+            totales: {
+                tipoIVA: 0.21,
+                formaDePago: "Transferencia bancaria"
+            }
+        };
+
+        // Constructor de factura
+        function Factura(empresa, cliente, detalle, tlva, formaPago) {
+            this.empresa = empresa;
+            this.cliente = cliente;
+            this.detalle = detalle;
+            this.totales = {
+                baseImponible: 0,
+                tipoIVA: tlva,
+                formaDePago: formaPago,
+                importeTotal: 0
+            };
+        }
+
+        // Método para calcular el total a pagar y actualizar las propiedades
+        Factura.prototype.calcularTotal = function () {
+            var total = 0;
+            this.detalle.forEach(function (item) {
+                total += item.precio * item.cantidad;
+            });
+            this.totales.baseImponible = total;
+            this.totales.importeTotal = total + (total * this.totales.tipoIVA);
+        };
+
+        // Método para imprimir la factura
+        Factura.prototype.imprimirFactura = function () {
+            var facturaDiv = document.getElementById("factura");
+            var html = `<h2>Factura de ${this.cliente.nombre}</h2>`;
+            html += `<p>Empresa: ${this.empresa.nombre}</p>`;
+            html += `<p>Cliente: ${this.cliente.nombre}</p>`;
+            html += `<p>Fecha: ${new Date().toLocaleDateString()}</p>`;
+            html += `<table>`;
+            html += `<tr><th>Descripción</th><th>Cantidad</th><th>Precio</th><th>Total</th></tr>`;
+            this.detalle.forEach(function (item) {
+                var totalItem = item.precio * item.cantidad;
+                html += `<tr><td>${item.descripcion}</td><td>${item.cantidad}</td><td>${item.precio.toFixed(2)}€</td><td>${totalItem.toFixed(2)}€</td></tr>`;
+            });
+            html += `</table>`;
+            html += `<p>El importe total de la factura es: ${this.totales.importeTotal.toFixed(2)}€ (IVA incluido).</p>`;
+            html += `<p>Forma de pago: ${this.totales.formaDePago}</p>`;
+            facturaDiv.innerHTML = html;
+        };
+
+        // Crear una instancia de la factura, calcular el total y mostrar la factura
+        const miFactura = new Factura(factura.empresa, factura.cliente, factura.detalle, factura.totales.tipoIVA, factura.totales.formaDePago);
+        miFactura.calcularTotal();
+        miFactura.imprimirFactura();
+    </script>
+</body>
+
+</html>

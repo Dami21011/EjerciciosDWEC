@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 17</title>
+</head>
+<body>
+    <!-- Lista desordenada -->
+    <ul>
+        <li> Elemento lista desordenada 1</li>
+        <li> Elemento lista desordenada 2</li>
+        <li> Elemento lista desordenada 3</li>
+    </ul>
+    <!-- Lista ordenada -->
+    <ol>
+        <li> Elemento lista ordenada 1</li>
+        <li> Elemento lista ordenada 2</li>
+        <li> Elemento lista ordenada 3</li>
+        <li> Elemento lista ordenada 4</li>
+    </ol>
+    <script>
+        // Recogemos los elementos de las listas
+        let listaDesordenada = document.querySelector('ul');
+        let listaOrdenada = document.querySelector('ol');
+
+        // Mostramos la cantidad que hay en esas listas
+        document.write(`La lista desordenada tiene ${listaDesordenada.children.length} elementos`);
+        document.write(`<br>La lista ordenada tiene ${listaOrdenada.children.length} elementos`);
+    </script>
+</body>
+</html>

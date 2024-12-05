@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 16</title>
+</head>
+<body>
+    <h1>Lista Dinámica</h1>
+    <div id="lista-container"></div>
+
+    <script>
+        // Array con los elementos de la lista
+        const elementos = ["Elemento 1", "Elemento 2", "Elemento 3", "Elemento 4","Elemento 5"];
+
+        // Seleccionar el contenedor donde se colocará la lista
+        const container = document.getElementById("lista-container");
+
+        // Construir la lista dinámica
+        let listaHTML = "<ul>"; // Abrimos la lista
+        elementos.forEach(elemento => {
+            listaHTML += `<li>${elemento}</li>`; // Añadir cada elemento como <li>
+        });
+        listaHTML += "</ul>"; // Cerramos la lista
+
+        // Insertar la lista en el contenedor usando innerHTML
+        container.innerHTML = listaHTML;
+    </script>
+</body>
+</html>

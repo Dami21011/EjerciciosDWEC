@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+    <style>
+        iframe {
+            width: 800px;
+            height: 600px;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        function abrirVentanaNueva() {
+            // Abrimos una nueva ventana no redimensionable
+            var ventanaNueva = window.open("", "VentanaNueva", "width=400,height=200,resizable=no");
+
+            // Escribimos el título en la nueva ventana
+            ventanaNueva.document.write("<h3>Ejemplo de Ventana Nueva</h3>");
+            ventanaNueva.document.write("<p>URL Completa: " + ventanaNueva.location + "</p>");
+            ventanaNueva.document.write("<p>Protocolo utilizado: " + ventanaNueva.location.protocol + "</p>");
+            ventanaNueva.document.write("<p>Nombre en código del navegador: " + ventanaNueva.navigator.userAgent + "</p>");
+            if (ventanaNueva.navigator.javaEnabled()) {
+                ventanaNueva.document.write('Java SI disponible en esta ventana')
+            } else {
+                ventanaNueva.document.write('Java NO disponible en esta ventana')
+            };
+            // Asignamos la URL al iframe en la ventana original
+            ventanaNueva.document.write("<br><iframe id='miIframe' src='https://www.wikipedia.org'></iframe>");
+        }
+
+        // Llamamos a la función cuando se carga la página
+        window.onload = abrirVentanaNueva;
+
+        document.write("<h1>TAREA DWEC03</h1>");
+        var nombreComp = prompt("Introduce tu nombre completo: ");
+        var dia = parseInt(prompt("Introduce tu dia de nacimiento: "));
+        var mes = parseInt(prompt("Introduce tu mes de nacimiento: "));
+        var año = parseInt(prompt("Introduce tu año de nacimiento: "));
+        document.write("Buenos dias " + nombreComp + "<br>");
+        document.write("Tu nombre tiene " + nombreComp.length + " caracteres incluidos espacios<br>");
+        document.write("Tu primera A está en la posición: " + nombreComp.indexOf("a") + "<br>");
+        document.write("Tu ultima A está en la posición: " + nombreComp.lastIndexOf("a") + "<br>");
+        document.write("Tu nombre menos las tres primeras letras: " + nombreComp.slice(3) + "<br>");
+        document.write("Tu nombre en mayusculas: " + nombreComp.toUpperCase() + "<br>");
+        fechaNac = new Date(año, mes, dia);
+        fechaActual = new Date();
+        edad = fechaActual.getFullYear() - fechaNac.getFullYear();
+
+        if (fechaActual.getMonth() < fechaNac.getMonth() ||
+            (fechaActual.getMonth() === fechaNac.getMonth() && fechaActual.getDate() < fechaNac.getDate())) {
+            edad--;
+        }
+        document.write("Tu edad: " + edad+" años<br>");
+        document.write("Naciste un feliz " + mes +" del año "+año+"<br>");
+        document.write("El coseno de 180 es :"+Math.cos(180)+"<br>");
+        document.write("El número mayor de (34,67,23,75,35,19) es: "+Math.max(34,67,23,75,35,19)+"<br>");
+        document.write("Ejemplo de numero al azar: "+Math.random());
+    </script>
+</body>
+
+</html>

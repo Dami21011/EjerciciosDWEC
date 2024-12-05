@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4</title>
+</head>
+<body>
+    <!-- Un elemento h1 con un id -->
+    <h1 id="titulo">Este es el título original</h1>
+
+    <script>
+        // Obtenemos el elemento h1 usando getElementById
+        let h1Elemento = document.getElementById("titulo");
+
+        // Accedemos al nodo de texto del h1 y cambiamos su valor
+        h1Elemento.firstChild.nodeValue = "Este es el nuevo texto del título";
+
+        // O también se podría usar innerText o textContent directamente:
+        // h1Elemento.textContent = "Este es el nuevo texto del título";
+    </script>
+</body>
+</html>

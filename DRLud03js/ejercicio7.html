@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 7</title>
+</head>
+
+<body>
+    <h1> Nómina del mes </h1>
+    <script>
+        //Creo fechas del mes de septiembre
+        var fecha1 = new Date(2024,9,1);
+        var fecha2 = new Date(2024,9,30);
+
+        //Restamos los dias de diferencia
+        diasTrabajados = fecha2.getDate() - fecha1.getDate();
+
+        //Calcula
+        var sueldoFinal = (diasTrabajados * 55) - ((diasTrabajados * 55) * 0.12);
+
+        document.write("El trabajador ha cobrado "+sueldoFinal+"€");
+    </script>
+</body>
+
+</html>

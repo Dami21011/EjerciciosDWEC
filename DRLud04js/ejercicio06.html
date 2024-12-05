@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Array Asociativo</title>
+</head>
+
+<body>
+    <h1>Marcas de moviles</h1>
+    <script>
+        // Crear el array asociativo como un objeto
+        let moviles = {
+            "Apple": "iPhone 8",
+            "Samsung": "Galaxy S8",
+            "Nokia": "Lumia 230",
+            "Huawei": "Mate 9",
+            "Sony": "Xperia XZ"
+        };
+
+        // Mostrar el listado
+        for (let marca in moviles) {
+            document.write(`<b>Marca:</b> ${marca}, <b>Modelo:</b> ${moviles[marca]} <br>`);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+</head>
+
+<body>
+    <script>
+        // Volcamos las imágenes de la carpeta imgs a un array
+        let imagenes = [
+            "imgs/html5.png",
+            "imgs/css3.png",
+            "imgs/javascript.png",
+        ];
+
+        // Índice inicial para controlar la imagen mostrada
+        let indiceActual = 0;
+
+        // Creamos un botón para ir hacia atrás entre imágenes
+        let botonAtras = document.createElement("button");
+        botonAtras.textContent = "Imagen anterior";
+        botonAtras.style.backgroundColor = "yellow";
+        botonAtras.style.marginLeft = "500px";
+        botonAtras.style.marginRight = "50px";
+        document.body.appendChild(botonAtras);
+
+        // Creamos el elemento de imagen y mostramos la primera imagen como fondo de pantalla
+        let imagen = document.createElement("img");
+        imagen.src = imagenes[indiceActual];
+        document.body.appendChild(imagen);
+
+        // Creamos un botón para ir hacia delante entre imágenes
+        let botonSiguiente = document.createElement("button");
+        botonSiguiente.textContent = "Siguiente imagen";
+        botonSiguiente.style.backgroundColor = "yellow";
+        botonSiguiente.style.marginLeft = "50px";
+        document.body.appendChild(botonSiguiente);
+
+        // Función para avanzar a la siguiente imagen
+        function avanzarImagen() {
+            if (indiceActual < imagenes.length - 1) {
+                indiceActual++;
+            } else {
+                indiceActual = 0;
+            }
+            imagen.src = imagenes[indiceActual];
+        }
+
+        // Función para retroceder a la imagen anterior
+        function retrocederImagen() {
+            if (indiceActual > 0) {
+                indiceActual--;
+            } else {
+                indiceActual = imagenes.length - 1;
+            }
+            imagen.src = imagenes[indiceActual];
+        }
+
+        // Evento para el botón de atrás
+        botonAtras.addEventListener("click", function () {
+            retrocederImagen();
+            reiniciarIntervalo();
+        });
+
+        // Evento para el botón de siguiente
+        botonSiguiente.addEventListener("click", function () {
+            avanzarImagen();
+            reiniciarIntervalo();
+        });
+
+        // Variable para almacenar el intervalo
+        let intervalo;
+
+        // Función para iniciar el intervalo
+        function iniciarIntervalo() {
+            intervalo = setInterval(avanzarImagen, 3000);
+        }
+
+        // Función para reiniciar el intervalo
+        function reiniciarIntervalo() {
+            clearInterval(intervalo);
+            iniciarIntervalo();
+        }
+
+        // Iniciar el intervalo por primera vez
+        iniciarIntervalo();
+    </script>
+</body>
+
+</html>

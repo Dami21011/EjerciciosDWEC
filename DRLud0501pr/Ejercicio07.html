@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 7</title>
+</head>
+
+<body>
+    <h1 id="not1">Noticia 1</h1>
+    <p id="par1">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+    <h1 id="not2">Noticia 2</h1>
+    <p id="par2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+    <h1 id="not3">Noticia 3</h1>
+    <p id="par3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+
+    <button onclick="volverMostrar()">Volver a mostrar</button>
+
+    <script>
+        /*Si pulsamos en noticia 1 se oculta el p*/
+        document.getElementById("not1").addEventListener("click", function () {
+            document.getElementById("par1").style.display = "none";
+        });
+        document.getElementById("not2").addEventListener("click", function () {
+            document.getElementById("par2").style.display = "none";
+        });
+        document.getElementById("not3").addEventListener("click", function () {
+            document.getElementById("par3").style.display = "none";
+        });
+        
+        /*Si pulsamos en el botón volver a mostrar se muestra el p*/
+        function volverMostrar() {
+            document.getElementById("par1").style.display = "block";
+            document.getElementById("par2").style.display = "block";
+            document.getElementById("par3").style.display = "block";
+        }
+    </script>
+</body>
+
+</html>

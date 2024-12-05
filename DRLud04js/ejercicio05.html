@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Múltiplos de 5</title>
+</head>
+<body>
+  <h1>Múltiplos de 5</h1>
+  <script>
+    // Función que devuelve un array con los elementos múltiplos de 5 del array pasado como parámetro
+    function obtenerMultiplosDe5(arr) {
+      return arr.filter(elemento => elemento % 5 === 0);
+    }
+
+    // Ejemplo de uso
+    const arreglo = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+    const multiplosDe5 = obtenerMultiplosDe5(arreglo);
+
+    // Mostrar el resultado
+    document.write("Múltiplos de 5: " + multiplosDe5);
+  </script>
+</body>
+</html>

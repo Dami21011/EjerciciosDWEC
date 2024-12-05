@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 20</title>
+</head>
+<body>
+    <h2>Extracción de Bolas</h2>
+    <p id="resultados"></p>
+
+    <script>
+        var bolasRojas = 0;
+        var bolasNegras = 0;
+        var totalExtracciones = 15;
+
+        for (var i = 0; i < totalExtracciones; i++) {
+            var bola = Math.random() < 0.5 ? 'roja' : 'negra'; // 50% probabilidad de roja o negra
+            if (bola === 'roja') {
+                bolasRojas++;
+            } else {
+                bolasNegras++;
+            }
+        }
+
+        var porcentajeRojas = (bolasRojas / totalExtracciones * 100).toFixed(2);
+        var porcentajeNegras = (bolasNegras / totalExtracciones * 100).toFixed(2);
+
+        document.getElementById('resultados').innerHTML = 
+            'Total de bolas rojas: ' + bolasRojas + ' (' + porcentajeRojas + '%)<br>' +
+            'Total de bolas negras: ' + bolasNegras + ' (' + porcentajeNegras + '%)';
+    </script>
+</body>
+</html>

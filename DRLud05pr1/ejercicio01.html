@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+
+<body>
+    <style>
+        #imagen {
+            height: 100px;
+            width: 300px;
+        }
+    </style>
+    <h1>Compra de inmuebles</h1>
+    <form>
+        <!-- Desplegable con las opciones del tipo de inmuebles -->
+        <label for="tipoInmueble">Tipo de inmueble:</label>
+        <select id="tipoInmueble" name="tipoInmueble">
+            <option value="casa">Casa</option>
+            <option value="piso">Piso</option>
+            <option value="chalet">Chalet</option>
+            <option value="adosado">Adosado</option>
+            <option value="parcela">Parcela</option>
+            <option value="local">Local</option>
+            <option value="nave">Nave</option>
+        </select>
+
+        <br>
+
+        <!-- Caja de texto con sugerencias -->
+        <label for="ciudad">Provincia:</label>
+        <input type="text" id="ciudad" name="ciudad" list="ciudades">
+        <datalist id="ciudades">
+            <option value="Valencia"></option>
+            <option value="Madrid"></option>
+            <option value="Barcelona"></option>
+            <option value="Murcia"></option>
+        </datalist>
+
+        <br>
+
+        <!-- Desplegable de 4 filas de alto y selección múltiple -->
+        <label for="ubi">Ubicación: </label> <br>
+        <select id="ubi" name="ubicacion" size="4" multiple>
+            <option value="Centro">Centro</option>
+            <option value="Sur">Sur</option>
+            <option value="Norte">Norte</option>
+            <option value="Este">Este</option>
+            <option value="Oeste">Oeste</option>
+            <option value="Ronda">Ronda</option>
+            <option value="Periferia">Periferia</option>
+        </select>
+
+        <br>
+
+        <!-- Número entre 0 y 500.000€ con saltos de 10.000 € -->
+        <label for="precio">Precio Máximo:</label>
+        <input type="number" id="precio" name="precio" min="0" max="500000" step="10000">
+        <br>
+
+        <!-- Número entre 0 y 5.000 metros con saltos de 50 metros -->
+        <label for="metros">Metros Minimos:</label>
+        <input type="number" id="metros" name="metros" min="0" max="5000" step="50">
+        <br>
+
+        <!-- Número de 0 a 40 sin saltos -->
+        <label for="altura">Altura Minima:</label>
+        <input type="number" id="altura" name="altura" min="0" max="40">
+        <br>
+
+        <!-- Número de 0 a 10 sin saltos -->
+        <label for="habitaciones">Mínimo de Habitaciones:</label>
+        <input type="number" id="habitaciones" name="habitaciones" min="1" max="10">
+        <br>
+
+        <!-- Número de 0 a 5 sin saltos -->
+        <label for="baños">Mínimo de Baños:</label>
+        <input type="number" id="baños" name="baños" min="1" max="5">
+        <br>
+
+        <!--Casillas de verificación de unas caracteristicas -->
+        <p><u>Caracteristicas </u></p>
+        <label for="cal">Calefacción:
+            <input type="checkbox" id="cal" name="caracteristicas" value="si">
+        </label>
+        <br>
+        <label for="acondicionado">Aire Acondicionado:
+            <input type="checkbox" id="acondicionado" name="caracteristicas" value="si">
+        </label>
+        <br>
+        <label for="gar">Garaje:
+            <input type="checkbox" id="gar" name="caracteristicas" value="si">
+        </label>
+        <br>
+        <label for="tras">Trastero:
+            <input type="checkbox" id="tras" name="caracteristicas" value="si">
+        </label>
+        <br>
+        <label for="pisc">Piscina:
+            <input type="checkbox" id="pisc" name="caracteristicas" value="si">
+        </label>
+        <br>
+        <label for="ascensor">Ascensor:
+            <input type="checkbox" id="ascensor" name="caracteristicas" value="si">
+        </label>
+        <br>
+        <label for="ext">Exterior:
+            <input type="checkbox" id="ext" name="caracteristicas" value="si">
+        </label>
+        <br>
+        <label for="terr">Terraza:
+            <input type="checkbox" id="terr" name="caracteristicas" value="si">
+        </label>
+        <br>
+        <label for="amu">Amueblado:
+            <input type="checkbox" id="amu" name="caracteristicas" value="si">
+        </label>
+        <br>
+
+        <!--Deslizante de min a max-->
+        <label for="metros">Proximidad a la playa:</label>
+        <input type="range" id="metros" name="metros" min="10" max="100" value="20">
+        <br>
+
+        <!--Botones de radio remarcados en un cuadro con el texto Estado y los valores excluyentes-->
+        <fieldset>
+            <legend>Estado</legend>
+            <label for="in">Indiferente: <!--(por defecto)-->
+                <input type="radio" id="in" name="estado" value="Indiferente" checked>
+            </label>
+            <label for="nuevo">Nuevo: <!--(por defecto)-->
+                <input type="radio" id="nuevo" name="estado" value="nuevo">
+            </label>
+            <label for="BnEstado">Buen Estado: <!--(por defecto)-->
+                <input type="radio" id="BnEstado" name="estado" value="BnEstado">
+            </label>
+            <label for="Reform">Para reformar: <!--(por defecto)-->
+                <input type="radio" id="Reform" name="estado" value="Reform">
+            </label>
+        </fieldset>
+        <br>
+        <!--Caja de texto máximo caracteres 35 -->
+        <label for="nom">Nombre:
+            <input type="text" id="nom" name="nombre" maxlength="35">
+        </label>
+        <br>
+        <!-- Caja de texto máximo caracteres 75 -->
+        <label for="ap">Apellidos:
+            <input type="text" id="ap" name="ap" maxlength="75">
+        </label>
+        <br>
+        <!--Caja de texto tipo correo -->
+        <label for="ema">Correo electrónico:
+            <input type="email" id="ema" name="email">
+        </label>
+        <br>
+        <!--Caja de texto tipo fecha-->
+        <label for="fec">Fecha de nacimiento:
+            <input type="date" id="fec" name="fecha">
+        </label>
+        <br>
+        <!--Caja de texto tipo contraseña-->
+        <label for="pas">DNI:
+            <input type="password" id="pas" name="DNI">
+        </label>
+        <br>
+        <!--Área de texto de 6 filas y 60 columnas-->
+        <label for="com">Comentarios:<br>
+            <textarea id="com" name="comentarios" rows="6" cols="60"></textarea>
+        </label>
+        <br>
+        <!--Campo oculto con la fecha actual en formato dd/mm/aaaa (sin php)-->
+        <input type="hidden" id="fecha" name="fecha">
+        <br>
+        <!--Botón de Enviar con una imagen-->
+        <input type="image" src="emp.jpg" alt="submit" name="enviar" id="imagen">
+        <br>
+        <!--Botón de Restablecer Formulario-->
+        <input type="reset" value="Restablecer">
+
+        <script>
+            // Obtener la fecha actual
+            const fechaActual = new Date();
+            
+            // Formatear la fecha en dd/mm/aaaa
+            const dia = String(fechaActual.getDate()).padStart(2, '0');
+            const mes = String(fechaActual.getMonth() + 1).padStart(2, '0'); // Los meses empiezan desde 0
+            const año = fechaActual.getFullYear();
+            const fechaFormateada = `${dia}/${mes}/${año}`;
+    
+            // Asignar la fecha formateada al campo oculto
+            document.getElementById('fecha').value = fechaFormateada;
+        </script>
+        <br>
+    </form>
+</body>
+
+</html>

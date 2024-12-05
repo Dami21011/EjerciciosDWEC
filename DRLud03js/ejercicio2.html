@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fecha 2</title>
+</head>
+
+<body>
+    <h1> Ejercicio 2 </h1>
+    <script>
+        var ahora = new Date();
+
+        // Usamos weekday y month para poner long para que devuelva el resultado Miercoles en lugar de 3 
+        // y septiembre en lugar de 9
+        var fechaFormateada = ahora.toLocaleDateString('es-ES', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+
+        var horaFormateada = ahora.toLocaleTimeString('es-ES', {
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+        });
+
+        // Usar document.write para escribir directamente en el HTML
+        document.write(fechaFormateada + " a las " + horaFormateada);
+
+    </script>
+</body>
+
+</html>

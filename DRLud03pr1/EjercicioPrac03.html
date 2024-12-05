@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+
+<body>
+    <div id="zonadibujo"></div>
+    <script>
+        // Obtener el elemento DIV con id "zonadibujo"
+        const zonaDibujo = document.getElementById('zonadibujo');
+
+        // Crear el tablero de 30x30 celdas
+        for (let i = 0; i < 30; i++) {
+            const fila = document.createElement('div');
+            fila.style.display = 'flex';
+            zonaDibujo.appendChild(fila);
+
+            for (let j = 0; j < 30; j++) {
+                const celda = document.createElement('div');
+                celda.style.width = '10px';
+                celda.style.height = '10px';
+                celda.style.border = '1px solid white';
+
+                // Generar un color aleatorio RGB
+                const colorAleatorio = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
+                celda.style.background = colorAleatorio;
+
+                fila.appendChild(celda);
+            }
+        }
+    </script>
+</body>
+
+</html>

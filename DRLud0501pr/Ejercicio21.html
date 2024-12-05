@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 21</title>
+</head>
+<body>
+    <h1>Elige un color para el fondo</h1>
+    <label for="selector-color">Selecciona un color:</label>
+    <select id="selector-color" onchange="cambiarColor()">
+        <option value="">--Selecciona un color--</option>
+        <option value="white">Blanco</option>
+        <option value="lightblue">Azul Claro</option>
+        <option value="lightgreen">Verde Claro</option>
+        <option value="lightpink">Rosa Claro</option>
+        <option value="lightyellow">Amarillo Claro</option>
+        <option value="gray">Gris</option>
+    </select>
+
+    <script>
+        // Función para obtener una cookie por su nombre
+        function getCookie(nombre) {
+            const cookies = document.cookie.split('; ');
+            for (let i = 0; i < cookies.length; i++) {
+                const [clave, valor] = cookies[i].split('=');
+                if (clave === nombre) return decodeURIComponent(valor);
+            }
+            return null;
+        }
+
+        // Función para establecer una cookie
+        function setCookie(nombre, valor, dias) {
+            const fecha = new Date();
+            fecha.setTime(fecha.getTime() + (dias * 24 * 60 * 60 * 1000));
+            document.cookie = `${nombre}=${encodeURIComponent(valor)}; expires=${fecha.toUTCString()}; path=/`;
+        }
+
+        // Función para cambiar el color de fondo y guardar la selección en una cookie
+        function cambiarColor() {
+            const colorSeleccionado = document.getElementById('selector-color').value;
+            if (colorSeleccionado) {
+                document.body.style.backgroundColor = colorSeleccionado; // Cambiar el color de fondo
+                setCookie('colorFondo', colorSeleccionado, 30); // Guardar en una cookie
+            }
+        }
+
+        // Al cargar la página, verifica si existe la cookie de color y aplica el fondo
+        document.addEventListener('DOMContentLoaded', () => {
+            const colorGuardado = getCookie('colorFondo');
+            if (colorGuardado) {
+                document.body.style.backgroundColor = colorGuardado; // Aplicar el color de fondo guardado
+                document.getElementById('selector-color').value = colorGuardado; // Seleccionar el valor en el desplegable
+            }
+        });
+    </script>
+</body>
+</html>

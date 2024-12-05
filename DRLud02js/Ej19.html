@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 19</title>
+</head>
+
+<body>
+    <script>
+        document.write("<h1>Conteo de números</h1>");
+        var contador = 0;
+        do {
+            var num = parseInt(prompt("Introduce un número: "));
+            if (num > 0) {
+                contador++;
+            }
+        } while (num >= 0);
+        document.write("Se han introducido "+contador+" números");
+    </script>
+</body>
+
+</html>

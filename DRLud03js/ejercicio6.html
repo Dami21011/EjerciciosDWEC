@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 6</title>
+</head>
+
+<body>
+    <h1> Reloj </h1>
+    <div id="reloj"></div>
+    <script>
+        //Funcion con la que cojo la hora actual y la imprimo en un div
+        function ActualizarTiempo() {
+            var reloj = new Date();
+            hora = reloj.getHours();
+            minuto = reloj.getMinutes();
+            segundo = reloj.getSeconds();
+
+           document.getElementById('reloj').innerHTML = hora +":"+minuto+":"+segundo;
+        }
+        //Con setInterval puedo actualizar cada segundo
+        intervalo = setInterval(ActualizarTiempo, 1000);   
+
+    </script>
+    <!-- con clearInterval paramos el reloj limpiando. -->
+    <button onclick="clearInterval(intervalo)">Parar Tiempo</button>
+</body>
+
+</html>

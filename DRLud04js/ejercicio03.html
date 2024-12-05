@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metros cubicos piscinas</title>
+</head>
+<body>
+    <script>
+        let long = 6;
+        let anch = 20;
+        let prof = 12;
+        let diam = 8;
+        //Calculo de piscina rectangular
+        function piscRec(long,anch,prof){
+            return "Los metros cúbicos de una piscina cuadrada o rectangular: "+(long*anch*prof);
+        }
+        //Calculo de piscina ovalada
+        function piscOval(long,anch,prof){
+            return "Los metros cúbicos de una piscina ovalada: "+(long*anch*prof*0.89);
+        }
+        //Calculo de piscina circular
+        function piscRed(dia,prof){
+            return "Los metros cúbicos de una piscina circular: "+(dia*dia*prof*0,79);
+        }
+
+        document.write("<b>Valores iniciales: </b><br>");
+        document.write("Longitud: "+long+"<br>");
+        document.write("Anchura: "+anch+"<br>");
+        document.write("Profundidad: "+prof+"<br>");
+        document.write("Diametro: "+diam+"<br><br>");
+        document.write(piscRec(long,anch,prof));
+        document.write("<br>");
+        document.write(piscOval(long,anch,prof));
+        document.write("<br>");
+        document.write(piscRed(diam,prof));
+    </script>
+</body>
+</html>

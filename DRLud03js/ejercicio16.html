@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 16</title>
+</head>
+<body>
+
+    <h1>Ficha de Dominó Extraída</h1>
+    <div id="ficha"></div>
+
+    <script>
+        // Generar el conjunto de fichas de dominó
+        var fichas = [];
+        for (var i = 0; i <= 6; i++) {
+            for (var j = i; j <= 6; j++) {
+                fichas.push([i, j]);
+            }
+        }
+
+        // Extraer una ficha aleatoria
+        var indiceAleatorio = Math.floor(Math.random() * fichas.length);
+        var fichaExtraida = fichas[indiceAleatorio];
+
+        // Remover la ficha extraída del conjunto de fichas
+        fichas.splice(indiceAleatorio, 1);
+
+        // Mostrar la ficha extraída en el HTML
+        var fichaDiv = document.getElementById("ficha");
+        fichaDiv.innerHTML = "La ficha extraída es: [" + fichaExtraida[0] + ", " + fichaExtraida[1] + "]";
+    </script>
+
+</body>
+</html>

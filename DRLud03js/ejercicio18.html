@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 18</title>
+</head>
+<body>
+    <h1>Número premiado de la ONCE:</h1>
+    <p id="numeroPremiado"></p>
+
+    <script>
+        var min = 10000; // Mínimo número de 5 dígitos
+        var max = 99999; // Máximo número de 5 dígitos
+        var numero = Math.floor(Math.random() * (max - min + 1)) + min; // Generar número aleatorio
+        document.getElementById("numeroPremiado").innerHTML = numero; // Mostrar el número
+    </script>
+</body>
+</html>

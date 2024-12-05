@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 43</title>
+</head>
+
+<body>
+    <h1>Saludos</h1>
+    <script>
+
+        var nota1 = 7, nota2 = 5, nota3 = 9;
+
+        var media = (nota1 + nota2 + nota3) / 3;
+        if (media < 5) {
+            document.write("La media de las notas es " + media + " osea un suspenso");
+        } else if (media == 5) {
+            document.write("La media de las notas es " + media + " osea un aprobado justo");
+        } else if (media == 6) {
+            document.write("La media de las notas es "+media+" osea un bien");
+        } else if (media >= 7 && media <= 8){
+            document.write("La media de las notas es "+media+" osea un notable");
+        } else if (media >= 9 && media <= 10){
+            document.write("La media de las notas es "+media+" osea un sobresaliente");
+        }
+
+    </script>
+</body>
+
+</html>

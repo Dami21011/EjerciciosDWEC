@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 5</title>
+</head>
+<body>
+    <h1>Repeticiones</h1>
+    
+    <script>
+        var num1, num2;
+        num1 = parseInt(prompt("Ingrese numero uno: "));
+        num2 = parseInt(prompt("Ingrese numero dos: "));
+        
+        if (num1 < num2) {
+            for (var i = num1; i <= num2; i++) {
+                document.write(i + "<br>");
+            }
+        } else {
+            for (var i = num1; i >= num2; i--) {
+                document.write(i + "<br>");
+            }
+        }
+    </script>
+</body>
+</html>

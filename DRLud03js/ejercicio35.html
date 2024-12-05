@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 35</title>
+</head>
+
+<body>
+    
+    <script>
+        var anchoPantalla = screen.width;
+        var altoPantalla = screen.height;
+        var altoDisponible = screen.availHeight;
+        var altoBarras = altoPantalla - altoDisponible;
+        var esResolucionSuperior = (anchoPantalla > 1024 && altoPantalla > 768);
+
+        document.body.innerHTML =
+            "<h1>Propiedades de pantalla</h1>" +
+            "Ancho de pantalla: " + anchoPantalla + " px<br>" +
+            "Alto de pantalla: " + altoPantalla + " px<br>" +
+            "Altura de la barra de tareas y otras barras: " + altoBarras + " px<br>" +
+            "La resolución de pantalla es superior a 1024x768: " + esResolucionSuperior;
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+
+<body>
+    <h1><u>LIBRERIAS VALENCIA</u></h1>
+    <form>
+        <!-- Input de texto -->
+        <label for="titulo">TITULO:
+            <input type="text" id="titulo" name="titulo">
+        </label>
+
+        <br><br>
+
+        <!-- Input de texto -->
+        <label for="autor">AUTOR:
+            <input type="text" id="autor" name="autor">
+        </label>
+
+        <br><br>
+
+        <!-- Input de texto -->
+        <label for="precio">PRECIO:
+            <input type="text" id="precio" name="precio">
+        </label>
+
+        <br><br>
+
+        <!--Desplegable de opciones en el que se agregarán mas con un botón-->
+        <label for="editorial">EDITORIAL:
+            <select id="editorial" name="editorial">
+            </select>
+        </label>
+        <br><br>
+        <button type="button" onclick="agregarOpcion()">Añadir Editorial</button>
+        <input type="text" id="editorialNueva" name="editorialNueva">
+
+        <br><br>
+
+        <p>UBICACIÓN: </p>
+        <ul id="ubicacion">
+        </ul>
+        <button type="button" onclick="agregarCalle()" id="m">+</button>
+        <button type="button" onclick="borrarCalle()" id="m">-</button>
+    </form>
+    <script>
+        var calles = ["Calle Rey de Austria 12", "Calle de la Paz 15", "Calle de la Constitución 20", "Calle de la Libertad 25", "Calle de la República 30"];
+        function agregarOpcion() {
+            var select = document.getElementById("editorial");
+            var opcion = document.createElement("option");
+            var nuevaEditorial = document.getElementById("editorialNueva").value; // Cojemos el valor
+            opcion.textContent = nuevaEditorial; //Cogemos el texto
+            select.add(opcion); //Lo insertamos
+        }
+
+        var indiceCalle = 0;
+
+        function agregarCalle() {
+            var ul = document.getElementById("ubicacion");
+
+            // Comprobar si hay más calles para agregar
+            if (indiceCalle < calles.length) {
+                var li = document.createElement("li");
+                li.textContent = calles[indiceCalle]; // Tomar la calle en el índice actual
+                ul.appendChild(li); // Agregar la calle a la lista
+
+                indiceCalle++; // Incrementar el índice para la siguiente calle
+            } else {
+                alert("No hay más calles para agregar."); // Mensaje si no hay más calles
+            }
+        }
+
+            // Borrar la última calle de la lista
+            function borrarCalle() {
+                var ul = document.getElementById("ubicacion");
+                if (ul.lastChild) { // Verificamos que haya un hijo
+                    ul.removeChild(ul.lastChild); // Removemos el último hijo
+                } else {
+                    alert("No hay calles para borrar."); // Mensaje si no hay más calles
+                }
+            }
+
+    </script>
+    <style>
+        * {
+            color: blue;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        #m {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        ul {
+            list-style: none;
+        }
+    </style>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 46</title>
+</head>
+
+<body>
+    <h1>Notas Programación</h1>
+    <script>
+        var not1 = parseFloat(prompt("Dime tu nota del primer examen: "));
+        var not2 = parseFloat(prompt("Dime tu nota del segundo examen: "));
+
+        var media = (not1+not2)/2;
+
+        document.write("Nota del primer examen: "+not1+"<br>");
+        document.write("Nota del segundo examen: "+not2+"<br>");
+
+        if(media < 5){
+            alert("Tu nota es menor a 5 asi que has tenido que realizar la recuperación");
+            var apt = prompt("¿Cuál ha sido el resultado de la recuperación? (apto/no apto): ");
+            document.write("El resultado de la recuperación? (apto/no apto): "+apt+"<br>");
+            if (apt == "apto"){
+                document.write("Tu nota de Programación es: 5");
+            } else {
+                document.write("Tu nota de Programación es: 1");
+            }
+        } else {
+            document.write("Tu nota de Programación es: "+media);
+        }
+
+        document.write("Has sacado "+puntos+"/4 puntos posibles");
+
+    </script>
+</body>
+
+</html>

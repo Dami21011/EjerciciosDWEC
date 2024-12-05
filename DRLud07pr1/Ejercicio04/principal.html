@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videoclub con IndexedDB</title>
+    <!-- Enlace al archivo CSS externo -->
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+    <!-- Encabezado principal -->
+    <h1>Gestión de Películas de Videoclub</h1>
+
+    <!-- Formulario para registrar o modificar una película -->
+    <form id="formularioPelicula" class="formulario">
+        <h3>Registrar/Modificar Película</h3>
+        <label for="codigo">Código:</label>
+        <input type="number" id="codigo" required><br>
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" required><br>
+        <label for="tema">Tema:</label>
+        <input type="text" id="tema" required><br>
+        <label for="duracion">Duración (minutos):</label>
+        <input type="number" id="duracion" required><br>
+        <label for="precio">Precio:</label>
+        <input type="number" step="0.01" id="precio" required><br>
+        <label for="cmoral">Clasificación Moral:</label>
+        <input type="text" id="cmoral" required><br>
+        <button type="submit" class="boton">Guardar Película</button>
+    </form>
+
+    <!-- Botón para listar las películas registradas -->
+    <h3>Listado de Películas</h3>
+    <button id="listarPeliculas" class="boton">Listar Películas</button>
+    <ul id="listaPeliculas"></ul>
+
+    <!-- Formulario para eliminar una película -->
+    <h3>Eliminar Película</h3>
+    <label for="codigoEliminar">Código:</label>
+    <input type="number" id="codigoEliminar">
+    <button id="eliminarPelicula" class="boton">Eliminar</button>
+
+    <script>
+        // Configuración inicial para IndexedDB
+        const dbNombre = 'VideoclubDB'; // Nombre de la base de datos
+        const dbVersion = 1;           // Versión de la base de datos
+        let db;                        // Variable para almacenar la conexión
+
+        // Abrir conexión con la base de datos
+        const request = indexedDB.open(dbNombre, dbVersion);
+
+        // Configuración inicial de la base de datos (solo en la primera vez)
+        request.onupgradeneeded = (event) => {
+            db = event.target.result;
+
+            // Crear almacén de objetos si no existe
+            if (!db.objectStoreNames.contains('peliculas')) {
+                const store = db.createObjectStore('peliculas', { keyPath: 'codigo' });
+                store.createIndex('titulo', 'titulo', { unique: false });
+            }
+        };
+
+        // Manejo de éxito en la conexión
+        request.onsuccess = (event) => {
+            db = event.target.result; // Guardar referencia de la base de datos
+            console.log('Conexión a IndexedDB exitosa');
+        };
+
+        // Manejo de error al abrir la base de datos
+        request.onerror = (event) => {
+            console.error('Error al abrir la base de datos', event.target.error);
+        };
+
+        // Agregar o modificar una película
+        document.getElementById('formularioPelicula').addEventListener('submit', (e) => {
+            e.preventDefault(); // Evitar el comportamiento por defecto del formulario
+
+            // Obtener valores del formulario
+            const codigo = parseInt(document.getElementById('codigo').value);
+            const titulo = document.getElementById('titulo').value;
+            const tema = document.getElementById('tema').value;
+            const duracion = parseInt(document.getElementById('duracion').value);
+            const precio = parseFloat(document.getElementById('precio').value);
+            const cmoral = document.getElementById('cmoral').value;
+
+            // Crear objeto película
+            const pelicula = { codigo, titulo, tema, duracion, precio, cmoral };
+
+            // Realizar transacción de escritura
+            const transaction = db.transaction(['peliculas'], 'readwrite');
+            const store = transaction.objectStore('peliculas');
+            store.put(pelicula); // Guardar o actualizar la película
+
+            // Manejo de éxito en la transacción
+            transaction.oncomplete = () => {
+                console.log('Película guardada:', pelicula);
+            };
+
+            // Manejo de error en la transacción
+            transaction.onerror = (event) => {
+                console.error('Error al guardar la película', event.target.error);
+            };
+        });
+
+        // Listar películas
+        document.getElementById('listarPeliculas').addEventListener('click', () => {
+            const transaction = db.transaction(['peliculas'], 'readonly');
+            const store = transaction.objectStore('peliculas');
+            const request = store.openCursor();
+
+            const lista = document.getElementById('listaPeliculas');
+            lista.innerHTML = ''; // Limpiar listado anterior
+
+            request.onsuccess = (event) => {
+                const cursor = event.target.result;
+                if (cursor) {
+                    // Crear elemento <li> con los datos de la película
+                    const { codigo, titulo, tema, duracion, precio, cmoral } = cursor.value;
+                    const li = document.createElement('li');
+                    li.textContent = `Código: ${codigo}, Título: ${titulo}, Tema: ${tema}, Duración: ${duracion} min, Precio: $${precio.toFixed(2)}, Clasificación: ${cmoral}`;
+                    lista.appendChild(li);
+                    cursor.continue(); // Avanzar al siguiente registro
+                }
+            };
+
+            request.onerror = (event) => {
+                console.error('Error al listar películas', event.target.error);
+            };
+        });
+
+        // Eliminar una película
+        document.getElementById('eliminarPelicula').addEventListener('click', () => {
+            const codigo = parseInt(document.getElementById('codigoEliminar').value);
+
+            // Realizar transacción de escritura
+            const transaction = db.transaction(['peliculas'], 'readwrite');
+            const store = transaction.objectStore('peliculas');
+            const request = store.delete(codigo); // Eliminar la película por código
+
+            // Manejo de éxito en la eliminación
+            request.onsuccess = () => {
+                console.log('Película eliminada con código:', codigo);
+            };
+
+            // Manejo de error en la eliminación
+            request.onerror = (event) => {
+                console.error('Error al eliminar la película', event.target.error);
+            };
+        });
+    </script>
+</body>
+
+</html>

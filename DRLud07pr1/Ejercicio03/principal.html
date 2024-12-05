@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Vehículos</title>
+    <link rel="stylesheet" href="estilos.css">
+    <script>
+        // Función para obtener la lista de vehículos del localStorage
+        function obtenerVehiculos() {
+            const vehiculos = localStorage.getItem('vehiculos');
+            return vehiculos ? JSON.parse(vehiculos) : [];
+        }
+
+        // Función para guardar la lista de vehículos en el localStorage
+        function guardarVehiculos(vehiculos) {
+            localStorage.setItem('vehiculos', JSON.stringify(vehiculos));
+        }
+
+        // Función para añadir un vehículo
+        function agregarVehiculo() {
+            const matricula = document.getElementById('matricula').value.trim();
+            const marca = document.getElementById('marca').value.trim();
+            const modelo = document.getElementById('modelo').value.trim();
+            const precio = parseFloat(document.getElementById('precio').value);
+            const color = document.getElementById('color').value.trim();
+
+            if (!matricula) {
+                alert("La matrícula es obligatoria.");
+                return;
+            }
+
+            const vehiculos = obtenerVehiculos();
+
+            // Verificar si la matrícula ya está registrada
+            if (vehiculos.some(vehiculo => vehiculo.matricula === matricula)) {
+                alert("Esa matrícula ya está registrada.");
+                return;
+            }
+
+            // Añadir el nuevo vehículo a la lista
+            const nuevoVehiculo = { matricula, marca, modelo, precio, color };
+            vehiculos.push(nuevoVehiculo);
+            guardarVehiculos(vehiculos);
+
+            alert(`Vehículo con matrícula ${matricula} añadido correctamente.`);
+            limpiarCampos();
+        }
+
+        // Función para consultar un vehículo
+        function consultarVehiculo() {
+            const matricula = document.getElementById('matricula').value.trim();
+            if (!matricula) {
+                alert("Introduce la matrícula para consultar el vehículo.");
+                return;
+            }
+
+            const vehiculos = obtenerVehiculos();
+            const vehiculo = vehiculos.find(vehiculo => vehiculo.matricula === matricula);
+
+            if (vehiculo) {
+                alert(`Datos del vehículo:\nMarca: ${vehiculo.marca}\nModelo: ${vehiculo.modelo}\nPrecio: ${vehiculo.precio}\nColor: ${vehiculo.color}`);
+            } else {
+                alert("No se encontró ningún vehículo con esa matrícula.");
+            }
+        }
+
+        // Función para borrar un vehículo
+        function borrarVehiculo() {
+            const matricula = document.getElementById('matricula').value.trim();
+            if (!matricula) {
+                alert("Introduce la matrícula para eliminar el vehículo.");
+                return;
+            }
+
+            const vehiculos = obtenerVehiculos();
+            const index = vehiculos.findIndex(vehiculo => vehiculo.matricula === matricula);
+
+            if (index !== -1) {
+                vehiculos.splice(index, 1);
+                guardarVehiculos(vehiculos);
+                alert(`Vehículo con matrícula ${matricula} eliminado.`);
+            } else {
+                alert("No se encontró ningún vehículo con esa matrícula.");
+            }
+        }
+
+        // Función para eliminar todos los vehículos
+        function borrarTodosLosVehiculos() {
+            if (confirm("¿Estás seguro de que deseas eliminar todos los vehículos?")) {
+                localStorage.removeItem('vehiculos');
+                alert("Todos los vehículos han sido eliminados.");
+            }
+        }
+
+        // Función para limpiar los campos
+        function limpiarCampos() {
+            document.getElementById('matricula').value = '';
+            document.getElementById('marca').value = '';
+            document.getElementById('modelo').value = '';
+            document.getElementById('precio').value = '';
+            document.getElementById('color').value = '';
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Gestión de Vehículos</h1>
+    <div>
+        <label for="matricula">Matrícula:</label>
+        <input type="text" id="matricula" placeholder="Introduce la matrícula">
+    </div>
+    <div>
+        <label for="marca">Marca:</label>
+        <input type="text" id="marca" placeholder="Introduce la marca">
+    </div>
+    <div>
+        <label for="modelo">Modelo:</label>
+        <input type="text" id="modelo" placeholder="Introduce el modelo">
+    </div>
+    <div>
+        <label for="precio">Precio:</label>
+        <input type="number" id="precio" placeholder="Introduce el precio">
+    </div>
+    <div>
+        <label for="color">Color:</label>
+        <input type="text" id="color" placeholder="Introduce el color">
+    </div>
+    <button onclick="agregarVehiculo()">Agregar Vehículo</button>
+    <button onclick="consultarVehiculo()">Consultar Vehículo</button>
+    <button onclick="borrarVehiculo()">Borrar Vehículo</button>
+    <button onclick="borrarTodosLosVehiculos()">Borrar Todos</button>
+</body>
+
+</html>

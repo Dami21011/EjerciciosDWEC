@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 20</title>
+</head>
+<body>
+    <h1 id="mensaje-bienvenida">Bienvenido/a</h1>
+    <div id="formulario-nombre">
+        <p>Introduce tu nombre:</p>
+        <input type="text" id="entrada-nombre" placeholder="Tu nombre aquí">
+        <button onclick="guardarNombre()">Guardar</button>
+    </div>
+
+    <script>
+        // Función para obtener una cookie por su nombre
+        function getCookie(nombre) {
+            const cookies = document.cookie.split('; ');
+            for (let i = 0; i < cookies.length; i++) {
+                const [clave, valor] = cookies[i].split('=');
+                if (clave === nombre) return decodeURIComponent(valor);
+            }
+            return null;
+        }
+
+        // Función para establecer una cookie
+        function setCookie(nombre, valor, dias) {
+            const fecha = new Date();
+            fecha.setTime(fecha.getTime() + (dias * 24 * 60 * 60 * 1000));
+            document.cookie = `${nombre}=${encodeURIComponent(valor)}; expires=${fecha.toUTCString()}; path=/`;
+        }
+
+        // Función para guardar el nombre en una cookie
+        function guardarNombre() {
+            const nombre = document.getElementById('entrada-nombre').value;
+            if (nombre) {
+                setCookie('nombreVisitante', nombre, 30); // Guardar la cookie por 30 días
+                mostrarMensajeBienvenida(nombre);
+            }
+        }
+
+        // Función para mostrar el mensaje de bienvenida
+        function mostrarMensajeBienvenida(nombre) {
+            document.getElementById('mensaje-bienvenida').textContent = `¡Bienvenido/a de nuevo, ${nombre}!`;
+            document.getElementById('formulario-nombre').style.display = 'none'; // Oculta el formulario
+        }
+
+        // Al cargar la página, verifica si existe la cookie
+        document.addEventListener('DOMContentLoaded', () => {
+            const nombreGuardado = getCookie('nombreVisitante');
+            if (nombreGuardado) {
+                mostrarMensajeBienvenida(nombreGuardado);
+            }
+        });
+    </script>
+</body>
+</html>

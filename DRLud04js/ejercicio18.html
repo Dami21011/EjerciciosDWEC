@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Arrays</title>
+</head>
+
+<body>
+    <h1>Países</h1>
+    <script>
+        // Crear el array
+        let paises = ["Paises Bajos", "Grecia", "Alemania", "Suiza", "Bélgica", "Dinamarca", "Irlanda", "Suecia", "Finlandia", "Portugal", "Reino Unido", "España", "Rusia"];
+
+        // Mostrar el listado
+        document.write("<b><u>Los países de la lista son: </u></b><br>");
+        for (let i = 0; i < paises.length; i++) {
+            document.write(paises[i] + " <br>");
+        }
+
+        // Devolver un subarray con los 2 siguientes países a Finlandia y mostrarlo
+        let finlandIndex = paises.indexOf("Finlandia");
+        let subarray = paises.slice(finlandIndex + 1, finlandIndex + 3); // Limitar a 2 países
+
+        document.write("<br><b>Los 2 países siguientes a Finlandia son: </b><br>");
+        for (let i = 0; i < subarray.length; i++) {
+            document.write(subarray[i] + " <br>");
+        }
+    </script>
+</body>
+
+</html>

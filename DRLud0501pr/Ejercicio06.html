@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 6</title>
+</head>
+
+<body>
+    <!-- Cuadro de texto donde introducir una frase -->
+    <input type="text" id="frase" placeholder="Introduce una frase">
+
+    <p id="respuesta"></p>
+
+    <script>
+
+        /*Funcion que mientras se escriba se vaya sumando 5 a cada tecla presionada*/
+        document.getElementById("frase").addEventListener("input", function (event) {
+            var texto = document.getElementById("frase").value;
+            var respuesta = "";
+
+            for (var i = 0; i < texto.length; i++) {
+                // Convertir el carácter a código ASCII, sumar 5 y convertir de nuevo a carácter
+                var nuevoChar = String.fromCharCode(texto.charCodeAt(i) + 5);
+                respuesta += nuevoChar;
+            }
+
+            document.getElementById("respuesta").innerHTML = respuesta;
+        });
+
+    </script>
+</body>
+
+</html>

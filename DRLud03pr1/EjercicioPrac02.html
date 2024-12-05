@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+</head>
+<style>
+    table,th,tr,td {
+        border-color:blue;
+        color: blue;
+    }
+    th {
+        text-align: center;
+    }
+</style>
+<body>
+    <script>
+        var nombre = prompt("Introduce tu nombre: ");
+        var apell = prompt("Introduce tus apellidos: ");
+        var dia = parseInt(prompt("Introduce tu día de nacimiento: "));
+        var mes = parseInt(prompt("Introduce tu mes de nacimiento (número): "));
+        var año = parseInt(prompt("Introduce tu año de nacimiento: "));
+        var calle = prompt("Introduce tu dirección (formato Calle XXXXXXXX - nº XX - Pta XXX): ");
+        var pob = prompt("Introduce tu población (formato CODIGO POSTAL - POBLACIÓN): ");
+        var idiomas = [];
+        var cantHij = parseInt(prompt("¿Cuántos hijos tienes?"));
+        var cantId = parseInt(prompt("¿Cuántos idiomas hablas?"));
+
+        var hijos = [];
+
+        for (var i = 0; i < cantHij; i++) {
+            hijos.push(prompt("Introduce el nombre de tu hijo/a: "));
+        }
+
+        for (var i = 0; i < cantId; i++) {
+            idiomas.push(prompt("Introduce el idioma que hablas: "));
+        }
+
+        // Calculamos la edad correctamente
+        var fechaNac = new Date(año, mes - 1, dia); // Restamos 1 al mes ya que los meses empiezan desde 0 en JavaScript
+        var fechaActual = new Date();
+        var edad = fechaActual.getFullYear() - fechaNac.getFullYear();
+
+        if (fechaActual.getMonth() < fechaNac.getMonth() ||
+            (fechaActual.getMonth() === fechaNac.getMonth() && fechaActual.getDate() < fechaNac.getDate())) {
+            edad--;
+        }
+
+        // Crear tabla con los datos
+        document.write("<table border='1'>");
+        document.write("<th colspan='2'>Datos del ciudadano</th>");
+        document.write("<tr>");
+        document.write("<td>Nombre</td>");
+        document.write("<td>" + apell + ", " + nombre.toUpperCase() + "</td>");
+        document.write("</tr>");
+        document.write("<tr>");
+        document.write("<td>Edad</td>");
+        document.write("<td>" + edad + "</td>");
+        document.write("</tr>");
+        document.write("<tr>");
+        document.write("<td>Calle</td>");
+        document.write("<td>" + calle.split("-")[0].trim() + "</td>");
+        document.write("</tr>");
+        document.write("<tr>");
+        document.write("<td>Número</td>");
+        document.write("<td>" + calle.split("-")[1].trim() + "</td>");
+        document.write("</tr>");
+        document.write("<tr>");
+        document.write("<td>Puerta</td>");
+        document.write("<td>" + calle.split("-")[2].trim() + "</td>");
+        document.write("</tr>");
+        document.write("<tr>");
+        document.write("<td>Código Postal</td>");
+        document.write("<td>" + pob.split("-")[0].trim() + "</td>");
+        document.write("</tr>");
+        document.write("<tr>");
+        document.write("<td>Población</td>");
+        document.write("<td>" + pob.split("-")[1].trim() + "</td>");
+        document.write("</tr>");
+        document.write("<tr>");
+        document.write("<td>Idiomas</td>");
+        document.write("<td>" + idiomas.join(", ") + "</td>");
+        document.write("</tr>");
+        document.write("<tr>");
+        document.write("<td>Nº Hijos</td>");
+        document.write("<td>" + cantHij + "</td>");
+        document.write("</tr>");
+        document.write("<tr>");
+        document.write("<td>Nombre Hijos</td>");
+        document.write("<td>" + hijos.join(" - ") + "</td>");
+        document.write("</tr>");
+        document.write("</table>");
+    </script>
+</body>
+
+</html>

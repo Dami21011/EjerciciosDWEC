@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 41</title>
+</head>
+
+<body>
+    <h1>Saludos</h1>
+    <script>
+
+        var horasTrabajadas = 38,sueldo;
+
+        if (horasTrabajadas <= 40) {
+            sueldo = horasTrabajadas * 12;
+        } else {
+            sueldo = (40 * 12) + ((horasTrabajadas - 40) * 16);
+        }
+
+        document.write("Cobrará "+sueldo+"€ esta semana")
+
+    </script>
+</body>
+
+</html>

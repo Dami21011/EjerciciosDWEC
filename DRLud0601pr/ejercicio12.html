@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 12</title>
+</head>
+
+<body>
+    <div id="bloque1">
+        <p>Texto 11</p>
+        <p>Texto 21</p>
+        <p>Texto 31</p>
+    </div>
+    <div id="bloque2">
+        <p>Texto 12</p>
+        <p>Texto 22</p>
+        <p>Texto 32</p>
+    </div>
+    <script>
+        // Obtener los elementos p del div con id bloque2
+        let elementos = document.getElementById("bloque2").getElementsByTagName("p");
+        // Recorrer los elementos p
+        for (let i = 0; i < elementos.length; i++) {
+            // Ponemos un punto al final
+            elementos[i].innerHTML += ".";
+        }
+    </script>
+</body>
+
+</html>

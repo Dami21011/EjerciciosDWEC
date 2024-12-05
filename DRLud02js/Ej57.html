@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 57</title>
+</head>
+
+<body>
+    <h1>Potencia de una base y un exponente introducidos</h1>
+    <script>
+        var numero = parseInt(prompt("Introduce un número:"));
+        var esPrimo = true;
+
+        if (numero <= 1) {
+            esPrimo = false;
+        } else {
+            for (var i = 2; i <= Math.sqrt(numero); i++) {
+                esPrimo = esPrimo && (numero % i !== 0);
+            }
+        }
+
+        if (esPrimo) {
+            document.write(numero + " es un número primo.");
+        } else {
+            document.write(numero + " no es un número primo.");
+        }
+
+    </script>
+</body>
+
+</html>

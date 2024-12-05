@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 30</title>
+</head>
+
+<body>
+    <script>
+        document.write("<h1>Alumnos, edades y estatura </h1>");
+        
+        var sumaEdad = 0, sumaAlt = 0, contador = 0, mayor18 = 0, mayor175 = 0;
+        
+        do {
+            var edad = parseInt(prompt("Introduce una edad: "));
+            var altura = parseFloat(prompt("Introduce una altura en metros: "));
+            
+            sumaEdad += edad;
+            sumaAlt += altura;
+            
+            if (edad > 18) {
+                mayor18++;
+            }
+            if (altura > 1.75) {
+                mayor175++;
+            }
+            contador++;
+        } while (contador < 5);
+        
+        var mediaEdad = sumaEdad / contador;
+        var mediaAltura = sumaAlt / contador;
+        
+        document.write("La media de todas las edades es " + mediaEdad + "<br>");
+        document.write("La media de todas las alturas es " + mediaAltura + "<br>");
+        document.write("Cantidad de alumnos mayores de 18: " + mayor18 + "<br>");
+        document.write("Cantidad de alumnos que miden más de 1.75m: " + mayor175 + "<br>");
+    </script>
+</body>
+
+</html>

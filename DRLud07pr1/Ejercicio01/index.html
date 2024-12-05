@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Empleados</title>
+    <link rel="stylesheet" href="estilos.css">
+    <script>
+        // Función para cargar la lista de empleados
+        function cargarEmpleados() {
+            var peticion = new XMLHttpRequest();
+            peticion.onreadystatechange = function () {
+                if (peticion.readyState == 4 && peticion.status == 200) {
+                    var datosJSON = JSON.parse(peticion.responseText);
+                    var empleadosRecibidos = datosJSON;
+
+                    document.getElementById("tabla").innerHTML = 
+                        "<tr><th>Id</th><th>Nombre</th><th>Edad</th><th>Cargo</th><th>Contratado</th><th>Acciones</th></tr>";
+
+                    for (var i = 0; i < empleadosRecibidos.length; i++) {
+                        var idEmpleado = empleadosRecibidos[i].id;
+                        var nombreEmpleado = empleadosRecibidos[i].nombre;
+                        var edadEmpleado = empleadosRecibidos[i].edad;
+                        var cargoEmpleado = empleadosRecibidos[i].cargo;
+                        var contratadoEmpleado = empleadosRecibidos[i].contratado ? "Sí" : "No";
+
+                        document.getElementById("tabla").innerHTML +=
+                            `<tr>
+                                <td>${idEmpleado}</td>
+                                <td>${nombreEmpleado}</td>
+                                <td>${edadEmpleado}</td>
+                                <td>${cargoEmpleado}</td>
+                                <td>${contratadoEmpleado}</td>
+                                <td>
+                                    <button onclick='modificarEmpleado(${idEmpleado})'>Modificar</button>
+                                    <button onclick='eliminarEmpleado(${idEmpleado})' 
+                                        ${empleadosRecibidos.length === 1 ? "disabled" : ""}>Eliminar</button>
+                                </td>
+                            </tr>`;
+                    }
+                }
+            };
+            peticion.open("GET", "http://test-api.jtarrega.es/api/empleados", true);
+            peticion.send();
+        }
+
+        // Llama a cargarEmpleados al inicio
+        document.addEventListener("DOMContentLoaded", cargarEmpleados);
+
+        // Mostrar formulario para agregar un empleado
+        function mostrarFormularioAgregar() {
+            document.getElementById("formulario").reset();
+            document.getElementById("formulario").style.display = "block";
+            document.getElementById("tabla").style.display = "none";
+            document.getElementById("btn-nuevo").disabled = true;
+        }
+
+        // Mostrar formulario para modificar un empleado
+        function modificarEmpleado(id) {
+            var peticion = new XMLHttpRequest();
+            peticion.open("GET", "http://test-api.jtarrega.es/api/empleados/" + id, true);
+            peticion.onreadystatechange = function () {
+                if (peticion.readyState === 4 && peticion.status === 200) {
+                    var empleado = JSON.parse(peticion.responseText)[0];
+
+                    // Prellenar los campos del formulario
+                    document.getElementById("nombre").value = empleado.nombre;
+                    document.getElementById("edad").value = empleado.edad;
+                    document.getElementById("cargo").value = empleado.cargo;
+                    document.getElementById("contratado").checked = empleado.contratado;
+                    document.getElementById("id").value = id;
+
+                    // Mostrar el formulario
+                    document.getElementById("formulario").style.display = "block";
+                    document.getElementById("tabla").style.display = "none";
+                    document.getElementById("btn-nuevo").disabled = true;
+                }
+            };
+            peticion.send();
+        }
+
+        // Guardar un empleado (crear o actualizar)
+        function guardarEmpleado() {
+            var id = document.getElementById("id").value;
+            var nombre = document.getElementById("nombre").value;
+            var edad = document.getElementById("edad").value;
+            var cargo = document.getElementById("cargo").value;
+            var contratado = document.getElementById("contratado").checked;
+
+            var datos = {
+                "nombre": nombre,
+                "edad": edad,
+                "cargo": cargo,
+                "contratado": contratado
+            };
+            var datosJSON = JSON.stringify(datos);
+
+            var peticion = new XMLHttpRequest();
+            var metodo = id ? "PUT" : "POST";
+            var url = id 
+                ? "http://test-api.jtarrega.es/api/empleados/" + id 
+                : "http://test-api.jtarrega.es/api/empleados";
+
+            peticion.open(metodo, url, true);
+            peticion.setRequestHeader("Content-Type", "application/json");
+
+            peticion.onreadystatechange = function () {
+                if (peticion.readyState === 4 && (peticion.status === 200 || peticion.status === 201)) {
+                    alert(id ? "Empleado actualizado exitosamente" : "Empleado creado exitosamente");
+                    cancelar();
+                    cargarEmpleados(); // Recarga la lista de empleados después de guardar
+                }
+            };
+            peticion.send(datosJSON);
+        }
+
+        // Eliminar empleado
+        function eliminarEmpleado(id) {
+            if (confirm("¿Está seguro de que desea eliminar este empleado?")) {
+                var peticion = new XMLHttpRequest();
+                peticion.open("DELETE", "http://test-api.jtarrega.es/api/empleados/" + id, true);
+
+                peticion.onreadystatechange = function () {
+                    if (peticion.readyState === 4 && peticion.status === 200) {
+                        alert("Empleado eliminado exitosamente");
+                        cargarEmpleados(); // Recarga la lista de empleados después de eliminar
+                    }
+                };
+                peticion.send();
+            }
+        }
+
+        // Cancelar y volver a la tabla
+        function cancelar() {
+            document.getElementById("formulario").style.display = "none";
+            document.getElementById("tabla").style.display = "block";
+            document.getElementById("btn-nuevo").disabled = false;
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        <button id="btn-nuevo" onclick="mostrarFormularioAgregar()">Nuevo Empleado</button>
+    </header>
+    <table id="tabla"></table>
+
+    <!-- Formulario para agregar o editar empleado -->
+    <form id="formulario" style="display: none;">
+        <input type="hidden" id="id">
+        <h1>Formulario de Empleado</h1>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre"><br><br>
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" name="edad"><br><br>
+        <label for="cargo">Cargo:</label>
+        <input type="text" id="cargo" name="cargo"><br><br>
+        <label for="contratado">Contratado:</label>
+        <input type="checkbox" id="contratado" name="contratado"><br><br>
+        <button type="button" onclick="guardarEmpleado()">Aceptar</button>
+        <button type="button" onclick="cancelar()">Cancelar</button>
+    </form>
+</body>
+
+</html>

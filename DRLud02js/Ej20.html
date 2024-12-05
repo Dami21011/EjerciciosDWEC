@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 20</title>
+</head>
+
+<body>
+    <script>
+        var numAdivinar = parseInt(prompt("Introduce el número a adivinar: "));
+        document.write("<h1>Adivinar número</h1>");
+        do {
+            var num = parseInt(prompt("Introduce un número: "));
+            if (num > numAdivinar) {
+                alert("El número a adivinar es menor");
+            } else if (num < numAdivinar){
+                alert("El número a adivinar es mayor");
+            } else {
+                document.write("Has acertado!!!!")
+            }
+        } while (num != numAdivinar);
+    </script>
+</body>
+
+</html>

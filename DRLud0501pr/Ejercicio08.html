@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 8</title>
+</head>
+<body>
+    <!-- Contenedor del anuncio -->
+    <div id="ad-container" style="width: 300px; height: 100px; border: 1px solid #000; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+        <img id="ad-image" src="" alt="Anuncio" style="position: absolute; width: 300px; height: 100px; object-fit: cover;">
+        <div id="ad-text" style="position: relative; color: white; font-size: 16px; font-weight: bold; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); z-index: 1;"></div>
+    </div>
+
+    <script>
+        // Lista de anuncios
+        const anuncios = [
+            { texto: "¡Oferta especial!", imagen: "imgs/sol.jpeg" },
+            { texto: "Descuentos del 50%", imagen: "imgs/tierra.jpeg" },
+            { texto: "Compra 1 y lleva 2", imagen: "imgs/urano.jpeg" }
+        ];
+
+        // Índice del anuncio actual
+        let indiceActual = 0;
+
+        function cambiarAnuncio() {
+            // Obtener elementos del contenedor de anuncios
+            const imagenAnuncio = document.getElementById("ad-image");
+            const textoAnuncio = document.getElementById("ad-text");
+
+            // Actualizar imagen y texto del anuncio
+            imagenAnuncio.src = anuncios[indiceActual].imagen;
+            textoAnuncio.textContent = anuncios[indiceActual].texto;
+
+            // Cambiar al siguiente anuncio
+            indiceActual = (indiceActual + 1) % anuncios.length;
+        }
+
+        // Cambiar anuncios cada 5 segundos
+        setInterval(cambiarAnuncio, 5000);
+
+        // Mostrar el primer anuncio al cargar la página
+        cambiarAnuncio();
+    </script>
+</body>
+</html>

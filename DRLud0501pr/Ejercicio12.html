@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 12</title>
+</head>
+
+<body>
+    <!-- Pedimos un número a través del formulario -->
+    <form onsubmit="comprobarInput(event)">
+        <label for="numero">Introduce un número:</label>
+        <input type="text" id="numero" name="numero">
+        <button type="submit">Comprobar si es número</button>
+    </form>
+    <script>
+        function comprobarInput(event) {
+            // Prevenimos el envío del formulario
+            event.preventDefault();
+
+            // Obtenemos el valor del input
+            var numero = document.getElementById("numero").value;
+
+            // Comprobamos si el valor es un número
+            if (isNaN(numero)) {
+                document.write("<p style='color: red; font-weight: bold;'>El valor introducido no es un número.</p>");
+            } else {
+                document.write("<p style='color: green; font-weight: bold;'>El valor introducido es un número.</p>");
+            }
+        }
+    </script>
+</body>
+
+</html>

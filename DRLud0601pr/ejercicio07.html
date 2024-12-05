@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 7</title>
+</head>
+<body>
+    <p id="parrafo1">Texto con id</p>
+    <p>Texto sin id</p>
+    <p>Texto sin id</p>
+
+    <script>
+        //Obtengo parrafo 1
+        let parrafo1 = document.getElementById("parrafo1");
+
+        //Ahora cambiamos el tamaño del texto de todos los hermanos p
+        parrafo1.style.fontSize = "30px";
+        parrafo1.nextElementSibling.style.fontSize = "30px";
+        parrafo1.nextElementSibling.nextElementSibling.style.fontSize = "30px";
+
+    </script>
+</body>
+</html>

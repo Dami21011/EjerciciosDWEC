@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 11</title>
+</head>
+<body>
+    <!-- Desplegable de imagenes -->
+    <select id="imagenes">
+        <option value="imgs/sol.jpeg" id="img1">Imagen 1</option>
+        <option value="imgs/tierra.jpeg" id="img2">Imagen 2</option>
+        <option value="imgs/urano.jpeg" id="img3">Imagen 3</option>
+    </select>
+
+    <div id="imagen"></div>
+
+    <script>
+
+        //Mostramos una imagen dependiendo del select y la mostramos
+        document.getElementById("imagenes").addEventListener("change", function(){
+            let imagen = document.getElementById("imagenes").value;
+            document.getElementById("imagen").innerHTML = `<br><img src="${imagen}" alt="Imagen seleccionada"> `;
+            });
+    </script>
+</body>
+</html>

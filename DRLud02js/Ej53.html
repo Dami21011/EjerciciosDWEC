@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 53</title>
+</head>
+
+<body>
+    <script>
+        var intentos = 1;
+        var acierto = false;
+
+        document.write("<h1>Apertura caja fuerte</h1>");
+        var codAper = 1234;
+        do {
+        var codInt = parseInt(prompt("Introduce el codigo de apertura: "));
+        if(codInt != codAper){
+            alert("Codigo incorrecto");
+        } else {
+            document.write("¡¡HAS ACERTADO!!");
+            acierto = true;
+        }
+        intentos++;
+        } while(intentos <= 4 && acierto == false);
+
+        if(intentos == 4){
+            document.write("Te quedaste sin intentos");
+        }
+
+    </script>
+</body>
+
+</html>

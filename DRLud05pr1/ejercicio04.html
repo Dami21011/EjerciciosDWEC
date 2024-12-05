@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4</title>
+</head>
+
+<body>
+    <h1>Alta de Personas</h1>
+
+    <p>Rellene los siguientes datos y envielos para insertar una nueva persona</p>
+
+    <form id="miFormulario">
+        <label for="dni">DNI
+            <input type="text" id="dni" name="dni" required>
+        </label>
+        <br>
+        <label for="nombre">Nombre
+            <input type="text" id="nombre" name="nombre" required>
+        </label>
+        <br>
+        <label for="foto">Foto
+            <input type="text" id="foto" name="foto">
+        </label>
+        <br>
+        <label for="edad">Edad
+            <input type="number" id="edad" name="edad" min="0">
+        </label>
+        <br>
+        <label for="pob">Población
+            <select id="pob" name="población">
+                <option value="" disabled selected>Seleccione una poblacion...</option>
+                <option value="Madrid">Madrid</option>
+                <option value="Barcelona">Barcelona</option>
+                <option value="Valencia">Valencia</option>
+            </select>
+        </label>
+        <br>
+        <div class="label-textarea">
+            <label for="obs">Observación:</label>
+            <textarea id="obs"></textarea>
+        </div>
+        <br>
+        <button type="submit">ENVIAR</button>
+    </form>
+    <script>
+        document.getElementById("miFormulario").addEventListener("submit", function (event) {
+            var dni = document.getElementById("dni").value;
+            var pob = document.getElementById("pob").value;
+            if (dni != "[0-9]{8}[A-Z]") {
+                event.preventDefault();
+                document.getElementById("dni").value = ""; //Borramos para que se quede en blanco
+                document.getElementById("dni").style.backgroundColor = "orange";
+                document.getElementById("dni").placeholder = "DNI INVALIDO";
+            }
+            if (pob == "") {
+                event.preventDefault();
+                document.getElementById("pob").style.backgroundColor = "orange";
+            }
+        });
+    </script>
+
+    <style>
+        :required {
+            background-color: yellow;
+        }
+
+        input {
+            background-color: rgb(162, 176, 190);
+        }
+
+        input#dni {
+            display: inline-block;
+            margin-left: 51px;
+        }
+
+        input#nombre {
+            display: inline-block;
+            margin-left: 27px;
+        }
+
+        input#foto {
+            display: inline-block;
+            margin-left: 50px;
+        }
+
+        input#edad {
+            display: inline-block;
+            margin-left: 46px;
+        }
+
+        select {
+            display: inline-block;
+            margin-left: 15px;
+        }
+
+        .label-textarea {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        textarea {
+            margin-left: 15px;
+            width: 200px;
+            height: 100px;
+            background-color: rgb(162, 176, 190);
+        }
+
+        button{
+            width: 80px;
+            height: 40px;
+            margin-left: 150px;
+            background-color: yellow;
+        }
+    </style>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscaminas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Buscaminas</h1>
+    <div id="configuracion">
+        <label for="dificultad">Elige un nivel de dificultad:</label>
+        <select id="dificultad">
+            <option value="sencillo">Sencillo</option>
+            <option value="normal">Normal</option>
+            <option value="avanzado">Avanzado</option>
+            <option value="experto">Experto</option>
+        </select>
+        <button onclick="iniciarJuego()">Iniciar Juego</button>
+        <button onclick="reiniciarJuego()">Reiniciar Juego</button>
+    </div>
+    <div id="info">
+        <span id="contador-minas">Minas restantes: 0</span>
+        <span id="temporizador">Tiempo: 0s</span>
+    </div>
+    <p id="perdido"></p>
+    <div id="tablero"></div>
+    <script src="script.js"></script>
+</body>
+</html>

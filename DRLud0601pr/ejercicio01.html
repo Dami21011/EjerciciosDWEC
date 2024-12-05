@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+
+<body>
+    <h1>Bienvenido a la pagina</h1>
+    <!-- Boton para cambiar tamaño del h1 -->
+    <button onclick="cambiarTamaño()">Cambiar tamaño</button>
+    <!-- Boton para cambiar color de fondo del h1 -->
+    <button onclick="cambiarColor()">Cambiar color</button>
+    <script>
+        // Funcion para cambiar tamaño del h1
+        function cambiarTamaño() {
+            var h1 = document.querySelector("h1");
+            /*Pedimos nuevo tamaño al usuario*/
+            var nuevoTamaño = prompt("Ingrese el nuevo tamaño del h1");
+            /*Cambiamos el tamaño del h1*/
+            h1.style.fontSize = nuevoTamaño + "px";
+        }
+        // Funcion para cambiar color de fondo del h1
+        function cambiarColor() {
+            var h1 = document.querySelector("h1");
+            /*Pedimos nuevo color al usuario*/
+            var nuevoColor = prompt("Ingrese el nuevo color del h1");
+            /*Cambiamos el color del h1*/
+            h1.style.backgroundColor = nuevoColor;
+        }
+    </script>
+</body>
+
+</html>

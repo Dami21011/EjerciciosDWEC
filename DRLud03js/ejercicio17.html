@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 17</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        #carta {
+            font-size: 24px;
+            padding: 20px;
+            background-color: white;
+            border: 1px solid black;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div id="carta"></div>
+
+    <script>
+        var palos = ["Oros", "Copas", "Espadas", "Bastos"];
+        var valores = ["As", "2", "3", "4", "5", "6", "7", "Sota", "Caballo", "Rey"];
+
+        var indicePalo = Math.floor(Math.random() * palos.length);
+        var indiceValor = Math.floor(Math.random() * valores.length);
+
+        document.getElementById("carta").innerHTML = valores[indiceValor] + " de " + palos[indicePalo];
+    </script>
+</body>
+</html>

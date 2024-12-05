@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 9</title>
+</head>
+<body>
+    <!-- Contenedor de la imagen -->
+    <div style="text-align: center; margin-top: 50px;">
+        <img id="main-image" src="https://ruta-incorrecta.com/imagen.jpg" alt="Imagen principal" 
+             style="width: 300px; height: 200px; border: 1px solid #000;">
+    </div>
+
+    <script>
+        // URL de la imagen por defecto
+        const imagenPorDefecto = "imgs/sol.jpeg";
+
+        // Obtener el elemento de la imagen
+        const imagen = document.getElementById("main-image");
+
+        // Escuchar el evento de error
+        imagen.addEventListener("error", () => {
+            // Cambiar la imagen a la por defecto si falla la carga
+            imagen.src = imagenPorDefecto;
+            // Creamos un parrafo donde avisemos del error
+            const parrafo = document.createElement("p");
+            parrafo.textContent = "La imagen no se ha podido cargar, se puso una por defecto";
+            parrafo.style.color = "red";
+            imagen.parentNode.appendChild(parrafo);
+        });
+    </script>
+</body>
+</html>

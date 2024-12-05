@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 5</title>
+</head>
+
+<body>
+    <h1> Pago a empleado </h1>
+    <script>
+        var horasTrabajadas = parseInt(prompt("Introduce las horas trabajadas: "));
+
+        var fechaTrabajo = prompt("Introduce el dia trabajado: ");
+
+        var pagoFinal;
+
+        //Comprobación mediante el switch para calcular el pago de las horas según el dia
+        switch (fechaTrabajo){
+            case "Sábado":
+                pagoFinal = 20 * horasTrabajadas;
+                break;
+            case "Domingo":
+                pagoFinal = 20 * horasTrabajadas;
+                break;
+            default:
+                pagoFinal = 15 * horasTrabajadas;
+                break;
+        }
+        //Muestreo de cobro
+        document.write("El trabajador ganó el "+fechaTrabajo+" unos "+pagoFinal+"€");
+    </script>
+</body>
+
+</html>

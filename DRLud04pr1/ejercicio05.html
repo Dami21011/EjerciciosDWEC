@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Edificios</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .output {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        // Declaración de las variables de los edificios
+        let edificios = [];
+
+        // Creación del objeto edificio
+        function Edificio(calle, numero, codPostal) {
+            this.calle = calle;
+            this.numero = numero;
+            this.codPostal = codPostal;
+            this.plantas = [];
+            this.mostrarMensajeEdificio();
+        }
+
+        // Creamos un método en el que se le pasa el número de plantas que queremos crear
+        // en el piso y el número de puertas por planta.
+        Edificio.prototype.agregarPlantasYPuertas = function (numPlantas, numPuertas) {
+            for (let i = 1; i <= numPlantas; i++) {
+                this.plantas.push({
+                    planta: i,
+                    puertas: []
+                });
+                for (let j = 1; j <= numPuertas; j++) {
+                    this.plantas[i - 1].puertas.push({
+                        puerta: j,
+                        propietario: null
+                    });
+                }
+            }
+        };
+
+        // Creamos un método en el que se le pasa 
+        // el nuevo número del edificio para que lo actualice.
+        Edificio.prototype.modificarNumero = function (nuevoNumero) {
+            this.numero = nuevoNumero;
+        }
+
+        // Creamos un método en el que se le pasa 
+        // la nueva calle del edificio para que lo actualice.
+        Edificio.prototype.modificarCalle = function (nuevaCalle) {
+            this.calle = nuevaCalle;
+        }
+
+        // Creamos un método en el que se le pasa 
+        // el nuevo codigo postal del edificio para que lo actualice.
+        Edificio.prototype.modificarCodigoPostal = function (nuevoCodPos) {
+            this.codPostal = nuevoCodPos;
+        }
+
+        // Método que devuelve el nombre de la calle del edificio
+        Edificio.prototype.imprimeCalle = function () {
+            return this.calle;
+        }
+
+        // Método que devuelve el número del edificio
+        Edificio.prototype.imprimeNumero = function () {
+            return this.numero;
+        }
+
+        // Método que devuelve el código postal del edificio
+        Edificio.prototype.imprimeCodPostal = function () {
+            return this.codPostal;
+        }
+
+        // Método en el que se le pasa un nombre de propietario, 
+        // un número de planta y un número de puerta y lo asignará como propietario de ese piso
+        Edificio.prototype.asignarPropietario = function (nombre, planta, puerta) {
+            let plantaEncontrada = this.plantas.find(p => p.planta === planta);
+            if (plantaEncontrada) {
+                let puertaEncontrada = plantaEncontrada.puertas.find(p => p.puerta === puerta);
+                if (puertaEncontrada) {
+                    puertaEncontrada.propietario = nombre;
+                    this.mostrarMensajePropietario(nombre, puerta, planta);
+                } else {
+                    document.write("No se encontró la puerta");
+                }
+            } else {
+                document.write("No se encontró la planta");
+            }
+        }
+
+        // Método en el que se recorrerá el edificio e imprimirá todos los propietarios de cada puerta.
+        Edificio.prototype.imprimePlantas = function () {
+            let output = "Propietarios del edificio:<br>";
+            for (let i = 0; i < this.plantas.length; i++) {
+                let planta = this.plantas[i];
+                for (let j = 0; j < planta.puertas.length; j++) {
+                    let puerta = planta.puertas[j];
+                    document.write(`La puerta ${puerta.puerta} de la planta ${planta.planta} pertenece a ${puerta.propietario || '<b>nadie</b>'}<br>`);
+                }
+            }
+        }
+
+        // Método para que cada vez que se cree un edificio muestre un mensaje
+        Edificio.prototype.mostrarMensajeEdificio = function () {
+            document.write("Construido nuevo edificio en calle: " + this.calle + ", nº: " + this.numero + ", CP: " + this.codPostal + "<br>");
+        }
+
+        // Método para que cada vez que se asigne un propietario a un piso muestre un mensaje
+        Edificio.prototype.mostrarMensajePropietario = function (nombre, puerta, planta) {
+            document.write(`${nombre} es ahora el propietario de la puerta ${puerta} de la planta ${planta}<br>`);
+        }
+
+        // Creamos instancias de edificio
+        let edificio1 = new Edificio("Calle de la Paz", 12, 28001);
+        edificio1.agregarPlantasYPuertas(2, 3);
+
+        let edificio2 = new Edificio("Calle de la Amistad", 15, 28002);
+        edificio2.agregarPlantasYPuertas(2, 3);
+
+        let edificio3 = new Edificio("Calle de la Unión", 18, 28003);
+        edificio3.agregarPlantasYPuertas(2, 3);
+
+        document.write("<br>");
+        // Asignamos 4 propietarios al edificio1
+        edificio1.asignarPropietario("Juan Miguel", 1, 1);
+        edificio1.asignarPropietario("Laura", 1, 2);
+        edificio1.asignarPropietario("Juan Carlos", 2, 1);
+        edificio1.asignarPropietario("Ana", 2, 2);
+
+        document.write("<br>");
+        // Listamos los propietarios del edificio1
+        document.write("<b>Listado de propietarios del edificio de la " + edificio1.calle + "</b><br>")
+        edificio1.imprimePlantas();
+        document.write("<br>");
+
+        //Creamos unos metodos nuevos para editar la cantidad de pisos y puertas de un edificio existente sin el propietario
+        Edificio.prototype.editarEdificio = function (piso, numPuertas) {
+            const plantaExistente = this.plantas.find(planta => planta.planta === piso);
+
+            if (plantaExistente) {
+                // Si existe, asegurar que tiene el número correcto de puertas
+                for (let j = 1; j <= numPuertas; j++) {
+                    if (!plantaExistente.puertas.find(p => p.puerta === j)) {
+                        plantaExistente.puertas.push({ puerta: j, propietario: null });
+                    }
+                }
+            } else {
+                // Si no existe, crear una nueva planta con todas las puertas
+                let puertas = [];
+                for (let j = 1; j <= numPuertas; j++) {
+                    puertas.push({ puerta: j, propietario: null });
+                }
+                this.plantas.push({ planta: piso, puertas: puertas });
+            }
+        };
+
+
+        Edificio.prototype.eliminarPuerta = function (piso, puerta) {
+            const plantaExistente = this.plantas.find(planta => planta.planta === piso);
+
+            if (plantaExistente) {
+                // Filtrar las puertas que no coinciden con la puerta a eliminar
+                plantaExistente.puertas = plantaExistente.puertas.filter(p => p.puerta !== puerta);
+
+                // Si no quedan puertas, eliminar la planta
+                if (plantaExistente.puertas.length === 0) {
+                    this.plantas = this.plantas.filter(planta => planta.planta !== piso);
+                }
+            }
+        };
+
+        Edificio.prototype.eliminarPlanta = function (piso) {
+            // Filtrar las plantas que no coinciden con la planta a eliminar
+            this.plantas = this.plantas.filter(planta => planta.planta !== piso);
+        };
+
+        edificio1.editarEdificio(3, 3); //Añadimos una nueva planta
+        edificio1.asignarPropietario("Pedro", 3, 2); //Agregamos un nuevo propietario a un piso de la nueva planta
+
+        document.write("<br><b>Listado de propietarios del edificio de la " + edificio1.calle + "</b><br>")
+        edificio1.imprimePlantas();
+    </script>
+</body>
+
+</html>

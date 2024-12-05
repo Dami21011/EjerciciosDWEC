@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+</head>
+<body>
+    <div id="cambio">
+        <p>Hola caracola</p>
+    </div>
+    <script>
+        // Cambiar el color del div cuando el raton pase
+        document.getElementById("cambio").addEventListener("mouseover", function(){
+            this.style.color = "red";
+        });
+        // Volver a dejar como antes el div cuando el raton salga
+        document.getElementById("cambio").addEventListener("mouseout", function(){
+            this.style.color = "";
+            });
+    </script>
+</body>
+</html>

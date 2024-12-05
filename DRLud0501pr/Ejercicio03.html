@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+
+<body>
+    <img src="imgs/imagen2.jpeg" alt="imagen2" id="imagen2" onclick="AumentarODisminuir()">
+    <script>
+        function AumentarODisminuir() {
+            var imagen = document.getElementById("imagen2");
+            /*SI damos doble click aumentamos el tamaño*/
+            if (event.detail === 2) {
+                imagen.style.width = "500px";
+                imagen.style.height = "500px";
+            }
+            /*Si damos click normal disminuimos el tamaño*/
+            if( event.detail === 1){
+                imagen.style.width = "100px";
+                imagen.style.height = "100px";
+            }
+        }
+    </script>
+</body>
+
+</html>

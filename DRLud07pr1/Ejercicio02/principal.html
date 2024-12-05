@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital La Fe</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+    <div class="contenedor">
+        <h1>Gestión de Pacientes</h1>
+        <div class="grupo-formulario">
+            <label for="id-paciente">ID del Paciente:</label>
+            <input type="text" id="id-paciente" placeholder="Introduce el ID">
+        </div>
+        <div class="grupo-formulario">
+            <label for="nombre-paciente">Nombre:</label>
+            <input type="text" id="nombre-paciente" placeholder="Introduce el nombre">
+        </div>
+        <div class="grupo-formulario">
+            <label for="apellidos-paciente">Apellidos:</label>
+            <input type="text" id="apellidos-paciente" placeholder="Introduce los apellidos">
+        </div>
+        <div class="grupo-formulario">
+            <label for="fecha-hora-paciente">Fecha y Hora:</label>
+            <input type="datetime-local" id="fecha-hora-paciente">
+        </div>
+        <button onclick="agregarPaciente()">Agregar Paciente</button>
+        <button onclick="consultarPaciente()">Consultar Paciente</button>
+        <button onclick="borrarPaciente()">Borrar Paciente</button>
+        <button onclick="eliminarTodos()">Eliminar Todos</button>
+        <button onclick="mostrarPacientes()">Mostrar Pacientes</button>
+        <div class="salida" id="salida"></div>
+    </div>
+
+    <script>
+        // Agregar paciente a sessionStorage
+        function agregarPaciente() {
+            const id = document.getElementById('id-paciente').value;
+            const nombre = document.getElementById('nombre-paciente').value;
+            const apellidos = document.getElementById('apellidos-paciente').value;
+            const fechaHora = document.getElementById('fecha-hora-paciente').value;
+
+            if (!id || !nombre || !apellidos || !fechaHora) {
+                alert("Por favor, completa todos los campos.");
+                return;
+            }
+
+            const paciente = {
+                id: id,
+                nombre: nombre,
+                apellidos: apellidos,
+                fechaHora: fechaHora
+            };
+
+            //Si el Id ya esta dentro no dejar agregar
+            if (sessionStorage.getItem(id) !== null) {
+                alert("Ya hay un paciente con ese id.");
+            } else {
+                // Obtener los pacientes almacenados
+                let pacientes = JSON.parse(sessionStorage.getItem('pacientes')) || [];
+                // Añadir el nuevo paciente al arreglo
+                pacientes.push(paciente);
+                // Guardar el arreglo actualizado
+                sessionStorage.setItem('pacientes', JSON.stringify(pacientes));
+
+                alert("Paciente agregado correctamente.");
+                limpiarCampos();
+            }
+        }
+
+        // Consultar datos de un paciente
+        function consultarPaciente() {
+            const id = document.getElementById('id-paciente').value;
+
+            if (JSON.parse(sessionStorage.getItem('pacientes')) === null) {
+                alert("No hay pacientes para consultar.");
+            } else if (!id) {
+                alert("Por favor, introduce el ID del paciente.");
+            } else {
+                const pacientes = JSON.parse(sessionStorage.getItem('pacientes')) || [];
+                const paciente = pacientes.find(p => p.id === id);
+
+                if (paciente) {
+                    document.getElementById('salida').innerHTML = `
+                    <p><strong>Datos del paciente (ID: ${id}):</strong></p>
+                    <p><strong>Nombre:</strong> ${paciente.nombre}</p>
+                    <p><strong>Apellidos:</strong> ${paciente.apellidos}</p>
+                    <p><strong>Fecha y Hora:</strong> ${paciente.fechaHora}</p>
+                `;
+                } else {
+                    document.getElementById('salida').textContent = `No se encontraron datos para el ID: ${id}`;
+                }
+            }
+        }
+
+        // Borrar un paciente específico
+        function borrarPaciente() {
+            const id = document.getElementById('id-paciente').value;
+
+            if (JSON.parse(sessionStorage.getItem('pacientes')) === null) {
+                alert("No hay pacientes para eliminar.");
+            } else if (!id) {
+                alert("Por favor, introduce el ID del paciente.");
+            } else {
+                let pacientes = JSON.parse(sessionStorage.getItem('pacientes')) || [];
+                const index = pacientes.findIndex(p => p.id === id);
+
+                if (index !== -1) {
+                    pacientes.splice(index, 1);  // Eliminar el paciente encontrado
+                    sessionStorage.setItem('pacientes', JSON.stringify(pacientes));  // Guardar el arreglo actualizado
+                    alert("Paciente eliminado correctamente.");
+                    document.getElementById('salida').textContent = '';
+                } else {
+                    alert("No se encontraron datos para el ID proporcionado.");
+                }
+            }
+        }
+
+        // Eliminar todos los pacientes
+        function eliminarTodos() {
+            //Si la lista esta vacia avisar
+            if (JSON.parse(sessionStorage.getItem('pacientes')) === null) {
+                alert("No hay pacientes para eliminar.");
+            } else if (confirm("¿Estás seguro de que deseas eliminar todos los pacientes?")) {
+                sessionStorage.clear('pacientes');
+                alert("Todos los pacientes han sido eliminados.");
+                document.getElementById('salida').textContent = '';
+            }
+        }
+
+        // Limpiar campos del formulario
+        function limpiarCampos() {
+            document.getElementById('id-paciente').value = '';
+            document.getElementById('nombre-paciente').value = '';
+            document.getElementById('apellidos-paciente').value = '';
+            document.getElementById('fecha-hora-paciente').value = '';
+        }
+
+        // Mostrar pacientes con sessionStorage
+        function mostrarPacientes() {
+            let pacientes = JSON.parse(sessionStorage.getItem('pacientes')) || [];
+            let salida = document.getElementById('salida');
+            salida.innerHTML = '';  // Limpiar salida anterior
+
+            if (pacientes.length > 0) {
+                pacientes.forEach(paciente => {
+                    let div = document.createElement('div');
+                    div.innerHTML = `
+                        <p><strong>ID:</strong> ${paciente.id}</p>
+                        <p><strong>Nombre:</strong> ${paciente.nombre}</p>
+                        <p><strong>Apellidos:</strong> ${paciente.apellidos}</p>
+                        <p><strong>Fecha y Hora:</strong> ${paciente.fechaHora}</p>
+                        <hr>
+                    `;
+                    salida.appendChild(div);
+                });
+            } else {
+                salida.innerHTML = '<p>No hay pacientes registrados.</p>';
+            }
+        }
+    </script>
+</body>
+
+</html>

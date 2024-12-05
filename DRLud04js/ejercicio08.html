@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Asociativo</title>
+</head>
+
+<body>
+    <h1>Marcas de móviles añadiendo marcas</h1>
+    <script>
+        // Crear el array asociativo como un objeto
+        let moviles = {
+            "Apple": "iPhone 8",
+            "Samsung": "Galaxy S8",
+            "Nokia": "Lumia 230",
+            "Huawei": "Mate 9",
+            "Sony": "Xperia XZ"
+        };
+
+        // Mostrar el listado original
+        document.write("<b><u>ARRAY ORIGINAL: </u></b><br>");
+        for (let marca in moviles) {
+            document.write(`<b>Marca:</b> ${marca}, <b>Modelo:</b> ${moviles[marca]} <br>`);
+        }
+
+        moviles["BQ"] = "Aquaris U2";  // Agregar una nueva marca
+        
+        // Mostrar el listado con la nueva marca
+        document.write("<br><b><u>ARRAY MODIFICADO: </u></b><br>");
+        for (let marca in moviles) {
+            document.write(`<b>Marca:</b> ${marca}, <b>Modelo:</b> ${moviles[marca]} <br>`);
+        }
+
+    </script>
+</body>
+
+</html>

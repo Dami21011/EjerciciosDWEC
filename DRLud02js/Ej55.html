@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 55</title>
+</head>
+
+<body>
+    <script>
+        var numero = prompt("Introduce un número entero:");
+        var i = 0;
+        document.write("<table border='1'>");
+        document.write("<tr><th>Número</th><th>Cuadrado</th><th>Cubo</th></tr>");
+
+        for (i = 0; i < 5; i++) {
+            var numActual = parseInt(numero) + i;
+            document.write("<tr>");
+            document.write("<td>" + numActual + "</td>");
+            document.write("<td>" + Math.pow(numActual, 2) + "</td>");
+            document.write("<td>" + Math.pow(numActual, 3) + "</td>");
+            document.write("</tr>");
+        }
+
+        document.write("</table>");
+    </script>
+</body>
+
+</html>

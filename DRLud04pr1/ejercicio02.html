@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+</head>
+
+<body>
+    <script>
+        //Declaracion de array
+        let numeros = [];
+
+        //Pedir numeros por teclado e insertarlos en el array hasta que sea un 0
+        let num;
+        do {
+            num = parseInt(prompt("Ingrese un numero, si desea salir ingrese 0"));
+            if (num != 0) {
+                numeros.push(num);
+            } else {
+                alert("Se ha finalizado la carga de numeros");
+            }
+        } while (num != 0);
+
+        //Mostramos la longitud del array
+        document.write("La longitud del array es: " + numeros.length+"<br>");
+
+        //Invertimos el array
+        let invertido = numeros.reverse();
+       
+        //Borramos el array
+        while (invertido.length > 0){
+            numeros.pop();
+        }
+
+        //Mostramos otra vez la longitud del array
+        document.write("<br>La longitud del array despues de invertilo y borrarlo es: " + numeros.length);
+    </script>
+</body>
+
+</html>

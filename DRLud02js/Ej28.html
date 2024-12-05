@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 28</title>
+</head>
+
+<body>
+    <script>
+        document.write("<h1>Estadisticas de números</h1>");
+        var mediaPos = 0,sumPos = 0,contPos = 0,sumNeg = 0,contNeg = 0,mediaNeg = 0,cantCeros = 0,contador = 0;
+        do {
+            var num = parseInt(prompt("Introduce un número: "));
+            if (num > 0){
+                sumPos += num;
+                contPos++;
+            } else if (num < 0){
+                sumNeg += num;
+                contNeg++;
+            } else {
+                cantCeros++;
+            }
+            contador++;
+        } while (contador < 10);
+        mediaPos = sumPos / contPos;
+        mediaNeg = sumNeg / contNeg;
+        document.write("La media de todos los numeros positivos da "+mediaPos+"<br>");
+        document.write("La media de todos los numeros negativos da "+mediaNeg+"<br>");
+        document.write("La cantidad de ceros es "+cantCeros);
+    </script>
+</body>
+
+</html>

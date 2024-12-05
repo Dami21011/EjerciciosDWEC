@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asignaturas</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid blue;
+            padding: 8px;
+            text-align: center;
+        }
+        th{
+            background-color: aqua;
+        }
+        td{
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Arrays que contienen las asignaturas de diferentes cursos
+        const primdam = ["BD","FOL","PRO","LM","SINF"];  // Asignaturas de 1DAM
+        const segdaw = ["DWEC","DWES","DIW","DAP","EIE"]; // Asignaturas de 2DAW
+        const segdam = ["ISO","PAR","FHR","GBD","LM"];    // Asignaturas de 2DAM
+        const primsmr = ["ASO","SR","IAE","SGBD","SAD"];  // Asignaturas de SMR
+
+        // Función que genera una tabla con las asignaturas de cada curso
+        function asignaturasTabla(primdam, segdaw, segdam, primsmr) {
+            // Plantilla HTML para la tabla con las asignaturas
+            let tableHtml = `
+                <table>
+                    <tr>
+                        <th>Categoría</th>
+                        <th>Departamento</th>
+                    </tr>
+                    <tr>
+                        <td>1DAM</td>
+                        <td>${primdam.join(", ")}</td>  <!-- Se inserta la lista de asignaturas de 1DAM -->
+                    </tr>
+                    <tr>
+                        <td>2DAW</td>
+                        <td>${segdaw.join(", ")}</td>  <!-- Se inserta la lista de asignaturas de 2DAW -->
+                    </tr>
+                    <tr>
+                        <td>2DAM</td>
+                        <td>${segdam.join(", ")}</td>  <!-- Se inserta la lista de asignaturas de 2DAM -->
+                    </tr>
+                    <tr>
+                        <td>SMR</td>
+                        <td>${primsmr.join(", ")}</td>  <!-- Se inserta la lista de asignaturas de SMR -->
+                    </tr>
+                </table>
+            `;
+            // Se reemplaza el contenido del body del documento con la tabla generada
+            document.body.innerHTML = tableHtml;
+        }
+
+        // Llamada a la función para generar la tabla y mostrarla en el documento
+        asignaturasTabla(primdam, segdaw, segdam, primsmr);
+    </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos del Alumno</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        th,
+        td {
+            padding: 8px 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: rgb(139, 214, 236);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Datos del Alumno</h1>
+
+    <div id="alumno-data"></div>
+
+    <script>
+        // Array con los datos del alumno
+        var alumno = [
+            1,                         // Código
+            'Luis',                    // Nombre
+            'Mas Ros',                 // Apellidos
+            new Date(1990, 9, 5),      // Fecha de nacimiento (05/10/1990)
+            7.5                        // Calificación
+        ];
+
+        // Función para calcular la edad del alumno
+        function calcularEdad(fechaNacimiento) {
+            var hoy = new Date();
+            var edad = hoy.getFullYear() - fechaNacimiento.getFullYear();
+            var mes = hoy.getMonth() - fechaNacimiento.getMonth();
+
+            // Si el mes actual es menor que el mes de nacimiento o si es el mismo mes pero aún no es el día, restar un año
+            if (mes < 0 || (mes === 0 && hoy.getDate() < fechaNacimiento.getDate())) {
+                edad--;
+            }
+            return edad;
+        }
+
+        // Calcular la edad del alumno
+        var edad = calcularEdad(alumno[3]);
+
+        // Mostrar los datos en una tabla
+        var tabla = `
+      <table>
+        <tr>
+          <th>Código</th>
+          <th>Nombre</th>
+          <th>Apellidos</th>
+          <th>Fecha de Nacimiento</th>
+          <th>Calificación</th>
+          <th>Edad</th>
+        </tr>
+        <tr>
+          <td>${alumno[0]}</td>
+          <td>${alumno[1]}</td>
+          <td>${alumno[2]}</td>
+          <td>${alumno[3].toLocaleDateString()}</td>
+          <td>${alumno[4]}</td>
+          <td>${edad} años</td>
+        </tr>
+      </table>
+    `;
+
+        // Insertar la tabla en el div con id "alumno-data"
+        document.getElementById('alumno-data').innerHTML = tabla;
+    </script>
+
+</body>
+
+</html>

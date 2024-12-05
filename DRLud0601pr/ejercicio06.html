@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 6</title>
+</head>
+
+<body>
+    <p id="parrafo1">Texto con id</p>
+    <p>Texto sin id</p>
+    <p>Texto sin id</p>
+
+    <script>
+        //Ahora cambiamos el tamaño del texto de todos los elementos de la pagina con asterisco
+        document.querySelectorAll('*').forEach(elemento => {
+            elemento.style.fontSize = '40px';
+        });
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 18</title>
+    <style>
+        input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .message {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Formulario -->
+    <form>
+        <label for="edad">Edad:</label>
+        <input type="text" id="edad" name="edad"><br>
+        <div id="message" class="message"></div>
+    </form>
+
+    <script>
+        // Seleccionar el campo de edad y el contenedor del mensaje
+        const edadInput = document.getElementById('edad');
+        const messageDiv = document.getElementById('message');
+
+        // Agregar evento blur (cuando se pierde el foco)
+        edadInput.addEventListener('blur', () => {
+            const valor = edadInput.value;
+
+            // Validar si es un número
+            if (valor === '') {
+                messageDiv.textContent = 'Por favor, ingresa un valor.';
+            } else if (isNaN(valor)) {
+                messageDiv.textContent = 'El valor ingresado no es un número válido.';
+            } else {
+                messageDiv.textContent = ''; // Limpiar mensaje si el valor es correcto
+            }
+        });
+    </script>
+</body>
+</html>

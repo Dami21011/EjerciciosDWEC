@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 61</title>
+</head>
+
+<body>
+    <h1>Calculo</h1>
+    <script>
+        var cont = 0,suma = 0;
+        do {
+            var n1 = parseInt(prompt("Introduce un numero: "));
+            cont++;
+            suma += n1;
+        } while (suma < 10000);
+        
+        var media = parseFloat(suma/cont);
+
+        document.write("Total acumulado: "+suma+"<br>");
+        document.write("Números introducidos: "+cont+"<br>");
+        document.write("Media: "+media)
+
+    </script>
+</body>
+
+</html>

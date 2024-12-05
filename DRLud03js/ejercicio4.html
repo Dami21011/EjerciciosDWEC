@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4</title>
+</head>
+
+<body>
+    <h1> Resta de fechas </h1>
+    <script>
+        // Crear una nueva fecha
+        var fecha = new Date();
+
+        // Restamos 5 años, 11 meses y 18 dias
+        fecha.setFullYear(fecha.getFullYear() - 5); // Restar 5 años
+        fecha.setMonth(fecha.getMonth() - 11);        // Restar 11 meses
+        fecha.setDate(fecha.getDate() - 18);          // Restar 18 días
+
+        // Formatear la fecha en un formato legible (DD:MM:YYYY)
+        var fechaFinal = fecha.getDate() + '/' +
+            (fecha.getMonth() + 1) + '/' +
+            fecha.getFullYear();
+
+        // Mostrar la fecha directamente en la página
+        document.write(fechaFinal);
+    </script>
+</body>
+
+</html>

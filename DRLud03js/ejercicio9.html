@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 9</title>
+</head>
+
+<body>
+    <h1> Comprobación del plazo </h1>
+    <script>
+        //Introduzco una fecha 8 que es septiembre porque los meses empiezan en 0
+        var fecha1 = new Date(2024,8,25);
+
+        //Fecha actual
+        var fechaLimite = new Date();
+
+        // Calcula si la fecha introducida es igual o menor a la actual
+        if (fecha1.getTime() === fechaLimite.getTime() || fecha1 < fechaLimite) {
+            document.write("Tranquilo máquina, aún estás a tiempo.<br>");
+        } else {
+            document.write("A la próxima estás más atento.<br>");
+        }
+    </script>
+</body>
+
+</html>

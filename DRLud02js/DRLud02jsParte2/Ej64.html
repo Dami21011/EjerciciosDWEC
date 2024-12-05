@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 64</title>
+</head>
+
+<body>
+    <h1>Productos</h1>
+    <script>
+        var baseImponible = parseFloat(prompt("Introduzca la base imponible:"));
+        var tipoIVA = prompt("Introduzca el tipo de IVA (general, reducido o superreducido):").toLowerCase();
+        var codigoPromocional = prompt("Introduzca el código promocional (nopro, mitad, meno5 o 5porc):").toLowerCase();
+
+        var iva = tipoIVA === "general" ? 0.21 :
+            tipoIVA === "reducido" ? 0.10 :
+                tipoIVA === "superreducido" ? 0.04 : 0;
+
+        var importeIVA = baseImponible * iva;
+        var precioConIVA = baseImponible + importeIVA;
+
+        var descuento = codigoPromocional === "nopro" ? 0 :
+            codigoPromocional === "mitad" ? precioConIVA / 2 :
+                codigoPromocional === "meno5" ? 5 :
+                    codigoPromocional === "5porc" ? precioConIVA * 0.05 : 0;
+
+        var precioFinal = codigoPromocional === "mitad" ? precioConIVA / 2 : precioConIVA - descuento;
+
+        document.write("Base imponible: " + baseImponible + "€<br>");
+        document.write("Cód. promo. (" + codigoPromocional + "): -" + descuento + "€<br>");
+        document.write("IVA (" + (iva * 100) + "%): " + importeIVA + "€<br>");
+        document.write("Precio con IVA: " + precioConIVA + "€<br>");
+        document.write("TOTAL: " + precioFinal + "€");
+
+    </script>
+</body>
+
+</html>

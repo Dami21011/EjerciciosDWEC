@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+
+<body>
+    <h1> Suma de fechas </h1>
+    <script>
+        // Crear una nueva fecha
+        var fecha = new Date();
+
+        // Restamos 10 años, 4 meses y 5 dias
+        fecha.setFullYear(fecha.getFullYear() + 10); // Sumar 10 años
+        fecha.setMonth(fecha.getMonth() + 4);        // Sumar 4 meses
+        fecha.setDate(fecha.getDate() + 5);          // Sumar 5 días
+
+        // Formatear la fecha en un formato legible (DD:MM:YYYY)
+        var fechaFinal = fecha.getDate() + '/' +
+            (fecha.getMonth() + 1) + '/' +
+            fecha.getFullYear();
+
+        // Mostrar la fecha directamente en la página
+        document.write(fechaFinal);
+    </script>
+</body>
+
+</html>

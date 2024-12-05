@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambiar Imagen</title>
+    <style>
+        /* Estilos opcionales para centrar la imagen */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Centrar verticalmente en la ventana */
+        }
+
+        img {
+            cursor: pointer; /* Indica que la imagen es interactiva */
+            max-width: 100%; /* Se ajusta al tamaño disponible */
+            height: auto;    /* Mantiene la proporción */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Imagen inicial con un atributo personalizado para almacenar la imagen alternativa -->
+        <img 
+            id="image" 
+            src="imgs/imagen1.jpeg" 
+            alt="Imagen inicial" 
+            data-alt-src="imgs/imagen2.jpeg"
+        >
+    </div>
+
+    <script>
+        // Selecciona la imagen por su ID
+        const image = document.getElementById('image');
+
+        // Agrega un evento al hacer clic sobre la imagen
+        image.addEventListener('click', () => {
+            // Obtiene la ruta actual y la alternativa
+            const currentSrc = image.src; // Ruta actual de la imagen
+            const newSrc = image.getAttribute('data-alt-src'); // Ruta alternativa
+
+            // Cambia la imagen
+            image.src = newSrc;
+            image.setAttribute('data-alt-src', currentSrc); // Actualiza la ruta alternativa
+        });
+    </script>
+</body>
+</html>

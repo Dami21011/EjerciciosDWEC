@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 10</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+        }
+
+        .salida {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Mostrar Texto Seleccionado</h1>
+    <textarea id="textarea" placeholder="Escribe algo aquí..."></textarea>
+    <button onclick="mostrarSeleccion()">Mostrar Selección</button>
+    <div class="salida" id="salida"></div>
+
+    <script>
+        function mostrarSeleccion() {
+            const textarea = document.getElementById('textarea');
+            const salida = document.getElementById('salida');
+
+            // Obtiene la posición inicial y final de la selección
+            const principio = textarea.selectionStart;
+            const final = textarea.selectionEnd;
+
+            // Extrae el texto seleccionado usando substring
+            const textosel = textarea.value.substring(principio, final);
+
+            // Muestra el texto seleccionado
+            salida.textContent = `Texto seleccionado: "${textosel}"`;
+        }
+    </script>
+</body>
+
+</html>

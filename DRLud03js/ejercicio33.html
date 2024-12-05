@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 33</title>
+</head>
+
+<body>
+    <h1>Cadenas</h1>
+
+    <script>
+        var mensaje = prompt("Introduce un mensaje:");
+        var mensajeEncriptado = "";
+        var mensajeDesencriptado = "";
+        var i = 0;
+
+        // Encriptar el mensaje
+        while (i < mensaje.length) {
+            mensajeEncriptado += String.fromCharCode(mensaje.charCodeAt(i) + 5);
+            i++;
+        }
+
+        document.write("Mensaje encriptado: " + mensajeEncriptado+"<br>");
+
+        i = 0;
+
+        // Desencriptar el mensaje
+        while (i < mensajeEncriptado.length) {
+            mensajeDesencriptado += String.fromCharCode(mensajeEncriptado.charCodeAt(i) - 5);
+            i++;
+        }
+
+        document.write("Mensaje desencriptado: " + mensajeDesencriptado);
+
+    </script>
+</body>
+
+</html>

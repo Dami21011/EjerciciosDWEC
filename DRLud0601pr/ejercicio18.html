@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 18</title>
+    <style>
+        table,
+        td,
+        th {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Creamos una tabla -->
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Edad</th>
+        </tr>
+        <tr>
+            <td>Pepe</td>
+            <td>Suarez</td>
+            <td>25</td>
+        </tr>
+        <tr>
+            <td>Juan</td>
+            <td>Jimenez</td>
+            <td>30</td>
+        </tr>
+    </table>
+    <script>
+        //Seleccionamos los tds de la tabla
+        let tds = document.querySelectorAll('td');
+        //Cambiamos el color de fondo
+        tds.forEach(td => {
+            td.style.backgroundColor = 'lightblue';
+        });
+    </script>
+</body>
+
+</html>
